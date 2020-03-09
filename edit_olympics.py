@@ -60,6 +60,15 @@ athlete_df["Host"] = athlete_df["City"].map(host_dict)
 # Remove columns (Shanelynn)
 athlete_df = athlete_df.drop(["Name", "Team", "Event", "Games", "City"], axis=1)
 
+
+
+
+# Add Population
+pop_df = pandas.read_csv('worldbank_pop.csv')
+#pop_df = pandas.merge(athlete_df, pop_df[['Country Code', 'Year']], on='Country Code')
+print(pop_df)
+
+
 ############################ WRITE FILES ############################
 
 

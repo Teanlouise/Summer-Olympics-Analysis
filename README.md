@@ -3,6 +3,7 @@
 
 ## Data
 - 120 years of Olympic history (Kaggle)- athlete_events.csv, noc_regions.csv
+- World Bank - https://data.worldbank.org/indicator/NY.GDP.MKTP.CD
 - host_cities_dictionary 
 
 ## Questions
