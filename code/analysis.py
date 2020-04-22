@@ -1,5 +1,8 @@
 import pandas as pd
 from matplotlib import pyplot as plt
+import seaborn as sns
+from seaborn_qqplot import qqplot
+import numpy as np
 
 def check_item_in(df1, df2):
     item_list = []
@@ -17,55 +20,71 @@ all_df = pd.read_csv(
 winter_df = all_df[all_df.Season == 'Winter']
 summer_df = all_df[all_df.Season == 'Summer']
 
-# HISTOGRAM - events, athletes, medals
-plt.figure()
-# The number of events per year
-winter_events = winter_df.groupby('Year').Event.nunique().reset_index()
-summer_events = summer_df.groupby('Year').Event.nunique().reset_index()
-ax1 = plt.subplot(1,3,1)
-bins = range(10, 320, 10)
-plt.hist(winter_events.Event, range=(10,100), bins=bins)
-plt.hist(summer_events.Event, range=(10,310), bins=bins)
-ax1.set_xticks(range(0, 310, 50))
-ax1.set_yticks(range(7))
-plt.xlabel('Number of events per year')
-plt.ylabel('Number of years')
-plt.title('Number of events')
 
-# The number of athletes
-winter_athletes = winter_df.groupby('Year').ID.nunique().reset_index()
-summer_athletes = summer_df.groupby('Year').ID.nunique().reset_index()
-ax2 = plt.subplot(1,3,2)
-bins = range(200, 12000, 500)
-plt.hist(winter_athletes.ID, bins=bins)
-plt.hist(summer_athletes.ID, bins=bins)
-ax2.set_xticks(range(0, 12000, 2000))
-ax2.set_yticks(range(8))
-plt.xlabel('Number of athletes per year')
-plt.ylabel('Number of years')
-plt.title('Number of athletes')
+def get_pairwise(season):
+    season_df = all_df[all_df.Season == season]
+    years = season_df.groupby('Year')
 
-# The number of medals
-winter_medals = winter_df.groupby('Year').Medal.count()
-summer_medals = summer_df.groupby('Year').Medal.count()
-print(winter_medals)
-ax3 = plt.subplot(1,3,3)
-bins = range(0, 6000, 75)
-plt.hist(winter_medals, bins=bins)
-plt.hist(summer_medals, bins=bins)
-ax3.set_xticks(range(0, 6000, 1000))
-ax3.set_yticks(range(7))
-plt.xlabel('Number of medals per year')
-plt.ylabel('Number of years')
-plt.title('Number of medals')
+    athletes = years.ID.nunique().reset_index()
+    events = years.Event.nunique().reset_index()
+    medals = years.Medal.count().reset_index()
 
+    df = pd.DataFrame()
+    df['Year'] = season_df.Year.unique()
+    df = df.merge(athletes, how='outer')
+    df = df.merge(events, how='outer')
+    df = df.merge(medals, how='outer')
+    df['Season'] = season
+    df = df.drop(columns=['Year'], axis=1)
+    return df
+
+
+sns.kdeplot(winter_df.groupby('Year').ID.count(), shade=True)
 plt.show()
 
+winter_df = get_pairwise("Winter")
+summer_df = get_pairwise("Summer")
+df = pd.concat([winter_df, summer_df])
+sns.pairplot(df, hue='Season')
+plt.show()
+
+# all_df['Winner'] = all_df.Medal.notna()
+# all_df['Weight'] = all_df.Weight.fillna(0)
+# all_df['Height'] = all_df.Height.fillna(0)
+
+
+# none_df = all_df[(all_df.Weight == 0) | (all_df.Height == 0)]
+# all_df = all_df.drop(none_df.index)
+
+# #winners = all_df[all_df.Medal.notna() == True]
+# #non_winners = all_df[all_df.Medal.notna() == False]
+
+# medal_df = pd.DataFrame()
+# medal_df['BMI Medal'] = all_df.apply(lambda x: get_BMI(x.Weight, x.Height/100) if x.Winner==True else 0, axis=1)
+# medal_df['BMI Non-Medal'] = all_df.apply(lambda x: get_BMI(x.Weight, x.Height/100) if x.Winner==False else 0, axis=1)
+
+# print(medal_df)
+
+# qqplot(medal_df, x="BMI Medal", y='BMI Non-Medal', display_kws={"identity":True,"fit":True,"reg":True,"ci":0.025})
+# plt.show()
+
+
+# BMI Boxplot for medal and non-medal for season
+# plt.figure()
+# plt.subplot(1,2,1)
+# sns.boxplot(data=all_df, x='Season', y='BMI', hue='Winner')
+# plt.title('Overall BMI of Athletes by Season')
+# plt.subplot(1,2,2)
+# sns.boxplot(data=all_df, x='Season', y='BMI', hue='Medal')
+# plt.title('Overall BMI of Medal Winners by Season')
+# plt.show()
 
 
 
 
-# both_df = summer_df[summer_df.ID.isin(winter_df.ID.unique())]
+
+
+
 #count_both, list_both = check_item_in(winter_df.ID, summer_df.ID)
 
 
@@ -75,8 +94,8 @@ for year in winter_df.Year.unique():
     years.append(year)
 
 # Years are column, NOC is rows
-summer_medals = summer_df[summer_df.Medal.notna()].groupby('Year')['NOC'].value_counts().unstack().fillna(0)
+#summer_medals = summer_df[summer_df.Medal.notna()].groupby('Year')['NOC'].value_counts().unstack().fillna(0)
 # NOC are column, Years rows
-summer_medals = summer_medals.groupby('Year').sum()
+#summer_medals = summer_medals.groupby('Year').sum()
 # Add total medals in rows
-summer_medals['Total'] = summer_medals.sum(axis=1)
+#summer_medals['Total'] = summer_medals.sum(axis=1)
