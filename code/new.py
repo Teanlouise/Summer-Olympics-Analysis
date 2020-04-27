@@ -168,6 +168,21 @@ plt.show()
 
 
 
+# Scatterplot split by season
+plt.subplot()
+sns.scatterplot(data=host_difference, x='Medal_Perc', y='Host_Medal_Perc', hue='Season', palette=athlete_colors)
+plt.plot([0,20],[0,20], 'black', linewidth=2)
+plt.show()
+# Shows 45line plus gits and CI
+sns.regplot(data=host_difference, x='Medal_Perc', y='Host_Medal_Perc', hue='Season' scatter=True, color='C7')
+plt.plot([0,20],[0,20], 'black', linewidth=2, linestyle='dashed')
+plt.show()
+# Resids
+sns.residplot(data=host_difference, x='Medal_Perc', y='Host_Medal_Perc', color='C7')
+plt.show()
+# Fit and CI for each season
+sns.lmplot(data=host_difference, x='Medal_Perc', y='Host_Medal_Perc', hue='Season', col='Season', palette=athlete_colors, robust=True)
+plt.show()
 
 
 

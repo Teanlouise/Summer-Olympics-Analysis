@@ -65,3 +65,18 @@ medals.head()
 # WINTER
 # Select all Winter games
 winter_df = all_df[all_df['Season'] == 'Winter']
+
+
+
+
+# Unique years
+years = []
+for year in winter_df.Year.unique():
+    years.append(year)
+
+# Years are column, NOC is rows
+#summer_medals = summer_df[summer_df.Medal.notna()].groupby('Year')['NOC'].value_counts().unstack().fillna(0)
+# NOC are column, Years rows
+#summer_medals = summer_medals.groupby('Year').sum()
+# Add total medals in rows
+#summer_medals['Total'] = summer_medals.sum(axis=1)

@@ -45,7 +45,7 @@ all_df = all_df.drop(art_df.index)
 
 # 2. Remove irrelevant columns
 extra_df = all_df
-all_df = all_df.drop(["Name", "Team", "Games"], axis=1)
+all_df = all_df.drop(["Name", "Team"], axis=1)
 #checkpoint('REMOVE EXTRA', all_df, True, extra_df)
 
 # 3. Remove years
@@ -80,11 +80,13 @@ all_df.loc[(all_df.City == 'Torino'),'City'] = 'Turin'
 all_df.loc[(all_df.City == 'Sankt Moritz'),'City'] = 'St. Moritz'
 #checkpoint('UPDATE HOST', all_df)
 
-# 7. Add Host Country
-all_df = all_df.merge(host_df[['Host_Country', 'City']]) \
+# 7. Add Host Country NOC
+all_df = all_df.merge(host_df[['Host_Country', 'Host_NOC', 'City']]) \
                                 .sort_values("Year") \
                                 .reset_index(drop = True)
 #checkpoint('ADD HOST COUNTRY', all_df)
+
+
 
 
 # 8. Add GDP

@@ -1,51 +1,51 @@
-,Year,City,Host_Country,Season
-0,1896 ,Athens,Greece,Summer
-1,1900 ,Paris,France,Summer
-2,1904 ,St. Louis,United States,Summer
-3,1908 ,London,England,Summer
-4,1912 ,Stockholm,Sweden,Summer
-5,1920 ,Antwerp,Belgium,Summer
-6,1924 ,Paris,France,Summer
-7,1928 ,Amsterdam,Netherlands,Summer
-8,1932 ,Los Angeles,United States,Summer
-9,1936 ,Berlin,Germany,Summer
-10,1948 ,London,England,Summer
-11,1952 ,Helsinki,Finland,Summer
-12,1956 ,Melbourne,Australia,Summer
-13,1960 ,Rome,Italy,Summer
-14,1964 ,Tokyo,Japan,Summer
-15,1968 ,Mexico City,Mexico,Summer
-16,1972 ,Munich,West Germany,Summer
-17,1976 ,Montreal,Canada,Summer
-18,1980 ,Moscow,Soviet Union,Summer
-19,1984 ,Los Angeles,United States,Summer
-20,1988 ,Seoul,South Korea,Summer
-21,1992 ,Barcelona,Spain,Summer
-22,1996 ,Atlanta,United States,Summer
-23,2000 ,Sydney,Australia,Summer
-24,2004 ,Athens,Greece,Summer
-25,2008 ,Beijing,China,Summer
-26,2012 ,London,England,Summer
-27,2016 ,Rio de Janeiro,Brazil,Summer
-28,1924 ,Chamonix,France,Winter
-29,1928 ,St. Moritz,Switzerland,Winter
-30,1932 ,Lake Placid,United States,Winter
-31,1936 ,Garmisch-Partenkirchen,Germany,Winter
-32,1948 ,St. Moritz,Switzerland,Winter
-33,1952 ,Oslo,Norway,Winter
-34,1956 ,Cortina d'Ampezzo,Italy,Winter
-35,1960 ,Squaw Valley,United States,Winter
-36,1964 ,Innsbruck,Austria,Winter
-37,1968 ,Grenoble,France,Winter
-38,1972 ,Sapporo,Japan,Winter
-39,1976 ,Innsbruck,Austria,Winter
-40,1980 ,Lake Placid,United States,Winter
-41,1984 ,Sarajevo,Yugoslavia,Winter
-42,1988 ,Calgary,Canada,Winter
-43,1992 ,Albertville,France,Winter
-44,1994 ,Lillehammer,Norway,Winter
-45,1998 ,Nagano,Japan,Winter
-46,2002 ,Salt Lake City,United States,Winter
-47,2006 ,Turin,Italy,Winter
-48,2010 ,Vancouver,Canada,Winter
-49,2014 ,Sochi,Russia,Winter
+,Year,City,Host_Country,Season,Host_NOC
+0,1896 ,Athens,Greece,Summer,GRE
+1,1900 ,Paris,France,Summer,FRA
+2,1904 ,St. Louis,United States,Summer,FRA
+3,1908 ,London,England,Summer,GBR
+4,1912 ,Stockholm,Sweden,Summer,SWE
+5,1920 ,Antwerp,Belgium,Summer,BEL
+6,1924 ,Paris,France,Summer,FRA
+7,1928 ,Amsterdam,Netherlands,Summer,NED
+8,1932 ,Los Angeles,United States,Summer,USA
+9,1936 ,Berlin,Germany,Summer,GER
+10,1948 ,London,England,Summer,GBR
+11,1952 ,Helsinki,Finland,Summer,FIN
+12,1956 ,Melbourne,Australia,Summer,AUS
+13,1960 ,Rome,Italy,Summer,ITA
+14,1964 ,Tokyo,Japan,Summer,JPN
+15,1968 ,Mexico City,Mexico,Summer,MEX
+16,1972 ,Munich,West Germany,Summer,GER
+17,1976 ,Montreal,Canada,Summer,CAN
+18,1980 ,Moscow,Soviet Union,Summer,RUS
+19,1984 ,Los Angeles,United States,Summer,USA
+20,1988 ,Seoul,South Korea,Summer,KOR
+21,1992 ,Barcelona,Spain,Summer,ESP
+22,1996 ,Atlanta,United States,Summer,USA
+23,2000 ,Sydney,Australia,Summer,AUS
+24,2004 ,Athens,Greece,Summer,GRE
+25,2008 ,Beijing,China,Summer,CHN
+26,2012 ,London,England,Summer,GBR
+27,2016 ,Rio de Janeiro,Brazil,Summer,BRA
+28,1924 ,Chamonix,France,Winter,FRA
+29,1928 ,St. Moritz,Switzerland,Winter,SUI
+30,1932 ,Lake Placid,United States,Winter,USA
+31,1936 ,Garmisch-Partenkirchen,Germany,Winter,GER
+32,1948 ,St. Moritz,Switzerland,Winter,SUI
+33,1952 ,Oslo,Norway,Winter,NOR
+34,1956 ,Cortina d'Ampezzo,Italy,Winter,ITA
+35,1960 ,Squaw Valley,United States,Winter,USA
+36,1964 ,Innsbruck,Austria,Winter,AUT
+37,1968 ,Grenoble,France,Winter,FRA
+38,1972 ,Sapporo,Japan,Winter,JPN
+39,1976 ,Innsbruck,Austria,Winter,AUT
+40,1980 ,Lake Placid,United States,Winter,USA
+41,1984 ,Sarajevo,Yugoslavia,Winter,SRB
+42,1988 ,Calgary,Canada,Winter,CAN
+43,1992 ,Albertville,France,Winter,FRA
+44,1994 ,Lillehammer,Norway,Winter,NOR
+45,1998 ,Nagano,Japan,Winter,JPN
+46,2002 ,Salt Lake City,United States,Winter,USA
+47,2006 ,Turin,Italy,Winter,ITA
+48,2010 ,Vancouver,Canada,Winter,CAN
+49,2014 ,Sochi,Russia,Winter,RUS
