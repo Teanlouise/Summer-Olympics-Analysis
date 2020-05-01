@@ -4,7 +4,7 @@ def get_season_df(file_name, season):
     host_data = []
     with open(file_name) as file_var:
         for line in file_var.readlines():
-                year = line[:5]
+                year = line[:4]
                 location = line[6:-1].split(', ')
                 city = location[0]
                 country = location[1]

@@ -7,41 +7,29 @@ from plots import *
 from statsmodels.graphics.gofplots import qqplot_2samples
 
 
-# Read in data and split between summer and winter
+athlete_total_df = pd.read_csv(
+    'F:/TEAN/Portfolio/olympics/data/athlete_total.csv', index_col=0)
+games_total_df = pd.read_csv(
+    'F:/TEAN/Portfolio/olympics/data/games_total.csv', index_col=0)
+noc_total_df = pd.read_csv(
+    'F:/TEAN/Portfolio/olympics/data/noc_total.csv', index_col=0)
+
 all_df = pd.read_csv(
-    'F:/TEAN/Portfolio/olympics/data/all_data.csv', index_col=0).reset_index(drop = True)
-
-## Add winner 
-all_df['Winner'] = all_df.Medal.notna()
-
-# Add BMI columns [Weight (kg) / Height^2 (m)]
-all_df['BMI'] = all_df.apply(lambda x: round(x.Weight/((x.Height/100)**2), 2), axis=1)
+    'F:/TEAN/Portfolio/olympics/data/summer_data.csv', index_col=0)
 
 
 
 
-######## THE ATHLETE #######
-
-
-# Athlete Totals (Games, Year, ID, Sex, Age, BMI, Season, NOC, #Events, #Medals)
-athlete_events = all_df.groupby(['Games', 'ID']).Event.count().reset_index()
-athlete_medals = all_df.groupby(['Games', 'ID']).Medal.count().reset_index()
-athlete_total_df = all_df[['Games', 'Year', 'ID', 'Sex', 'Age', 'BMI', 'Season', 'NOC', 'Winner']]
-athlete_total_df = athlete_total_df.drop_duplicates()
-athlete_total_df = athlete_total_df.merge(athlete_events, how='outer') \
-                                    .merge(athlete_medals, how='outer')
-
+#### THE ATHLETE ########
 
 # Athlete split up
-winter_athlete = [athlete_total_df[athlete_total_df['Season'] == 'Winter'], 'Winter', 'C0']
-summer_athlete = [athlete_total_df[athlete_total_df['Season'] == 'Summer'], 'Summer', 'C1']
 male_athlete = athlete_total_df[athlete_total_df['Sex'] == 'M']
 female_athlete = athlete_total_df[athlete_total_df['Sex'] == 'F']
 medal_athlete = athlete_total_df[athlete_total_df['Winner']]
 non_medal_athlete = athlete_total_df[athlete_total_df['Winner'] == False]
 
 athlete_var_list = ['Age', 'BMI', 'Event', 'Medal']
-athlete_colors ={'Winter': 'C0', 'Summer':'C1', 'F': 'C6', 'M': 'C9', False: 'C4', True: 'C2'}
+athlete_colors ={'F': 'C6', 'M': 'C9', False: 'C4', True: 'C2'}
 
 # DISTRIBUTION
 def athlete_hist(category, *dfs): 
@@ -52,7 +40,8 @@ def athlete_hist(category, *dfs):
     for var in athlete_var_list:
         plot_min = int(athlete_total_df[var].min())
         plot_max = int(athlete_total_df[var].max())
-        bins = int(plot_max - plot_min)
+        #bins = int(plot_max - plot_min)
+        bins = 20
 
         plot[2] += 1
         ax = plt.subplot(plot[0], plot[1], plot[2])
@@ -68,83 +57,92 @@ def athlete_hist(category, *dfs):
         plt.legend()
     plt.show()
 
-athlete_hist('Overall', [athlete_total_df, 'All', 'C7'])
-athlete_hist('by Season', winter_athlete, summer_athlete)
-athlete_hist('by Gender', male_athlete, female_athlete)
-athlete_hist('by Winner', medal_athlete, non_medal_athlete)
+#athlete_hist('Overall', [athlete_total_df, 'All', 'C7'])
+athlete_hist('by Gender',[male_athlete, 'Male', 'C9'], [female_athlete, 'Female', 'C6'])
+#athlete_hist('by Winner', [medal_athlete, 'Medal Winner', 'C2'], [non_medal_athlete, 'No Medal', 'C4'])
 
 
 # RELATIONSHIP
 # All
-sns.pairplot(athlete_total_df, kind='scatter', diag_kind='hist', vars=athlete_var_list, plot_kws={'color':'C7'}, diag_kws={'color':'C7'})
-plt.subplots_adjust(top=0.95)
-plt.gcf().suptitle('Overall Relationship of Athlete Variables')
-plt.show()
+# sns.pairplot(athlete_total_df, kind='scatter', diag_kind='hist', vars=athlete_var_list, plot_kws={'color':'C7'}, diag_kws={'color':'C7'})
+# plt.subplots_adjust(top=0.95)
+# plt.gcf().suptitle('Overall Relationship of Athlete Variables')
+# plt.show()
 
 # Each category
-hue_list = ['Season', 'Sex', 'Winner']
-for hue in hue_list: 
-    sns.pairplot(athlete_total_df, hue=hue, kind='scatter', diag_kind='hist', vars=athlete_var_list, palette=athlete_colors)
-    plt.subplots_adjust(top=0.95)
-    plt.gcf().suptitle('Relationship of Athlete Variables by {hue}'.format(hue=hue))
-    plt.legend()
-    plt.show()
+# athlete_hue_list = ['Sex', 'Winner'] #Remove season
+
+# sns.pairplot(athlete_total_df, hue='Sex', kind='scatter', diag_kind='hist', vars=['Age', 'BMI','Event', 'Medal'], palette=athlete_colors)
+# plt.subplots_adjust(top=0.95)
+# plt.gcf().suptitle('Participation Behaviour of Athletes')
+# plt.legend()
+# plt.show()
 
 
 # COMPARISON
 # QQ plot
-def athlete_qqplot(df1, df2):
-    plot = [2, 2, 0]
+athlete_var_list = [['Age', [10,45]], ['BMI', [10,35]]]
+def athlete_qqplot(df1, label1, df2, label2):   
+    plot = [1, 2, 0]
     for var in athlete_var_list:
         plot[2] += 1
-        ax = plt.subplot(plot[0], plot[1], plot[2])
-        ax.axis(facecolor='blue')
-        qqplot_2samples(df1[0][var], df2[0][var], xlabel=df1[1], ylabel=df2[1], line='45', ax=ax)
-        plt.title('{var}'.format(var=var))
+        plt.subplot(plot[0], plot[1], plot[2])
+        df1_age_percentile = df1[var[0]].quantile(np.arange(0,1,0.01))
+        df2_age_percentile = df2[var[0]].quantile(np.arange(0,1,0.01))
+        plt.scatter(df1_age_percentile, df2_age_percentile)
+        plt.plot(var[1],var[1], color='black')
+        plt.title("{var} Difference".format(var=var[0]))
+        plt.text(15,15, 'a=b')
+        plt.xlabel(label1)
+        plt.ylabel(label2)
     plt.subplots_adjust(top=0.9)
     plt.gcf().suptitle('Comparison of Athlete Variables')
     plt.show()
-athlete_qqplot(winter_athlete, summer_athlete)
-athlete_qqplot(male_athlete, summer_athlete)
-athlete_qqplot(medal_athlete, non_medal_athlete)
+        
+athlete_qqplot(female_athlete, 'Female', male_athlete, 'Male')
+athlete_qqplot(medal_athlete, 'Medal Winner', non_medal_athlete, 'No Medal')
+
 
 # Barplot for Medal and Event, Boxplot for Age and BMI
-plot = [2,2,0]
-for hue in athlete_hue_list:
-    for var in ['Age','BMI']:
-        plot[2] += 1
-        plt.subplot(plot[0], plot[1], plot[2])
-        sns.boxplot(x=hue , y=var, palette=athlete_colors, data=athlete_total_df)
-    for var in ['Event', 'Medal']:
-        plot[2] += 1
-        plt.subplot(plot[0], plot[1], plot[2])
-        sns.barplot(x=hue , y=var, palette=athlete_colors, data=athlete_total_df)
-    plt.gcf().suptitle('Comparison for all athletes')
-    plt.show()
-    plot[2] = 0
+# 
+# plot = [2,2,0]
+# for hue in athlete_hue_list:
+#     for var in ['Age','BMI']:
+#         plot[2] += 1
+#         plt.subplot(plot[0], plot[1], plot[2])
+#         sns.boxplot(x=hue , y=var, palette=athlete_colors, data=athlete_total_df)
+#     for var in ['Event', 'Medal_Perc']:
+#         plot[2] += 1
+#         plt.subplot(plot[0], plot[1], plot[2])
+#         sns.barplot(x=hue , y=var, palette=athlete_colors, data=athlete_total_df)
+#     plt.gcf().suptitle('Comparison for all athletes')
+#     plt.show()
+#     plot[2] = 0
 
 # Boxplot and barplot broken down for each category
-plot = [4,3,0]
-for hue in athlete_hue_list:
-    for var in athlete_var_list:   
-        plot[2] += 1
-        plt.subplot(plot[0], plot[1], plot[2]) 
-        if var in ['Age', 'BMI']:
-            sns.boxplot(x=hue , y=var, palette=athlete_colors, data=athlete_total_df)
-        else:
-            sns.barplot(x=hue , y=var, palette=athlete_colors, data=athlete_total_df)
-        for hue2 in athlete_hue_list:
-            if hue != hue2:
-                plot[2] += 1
-                plt.subplot(plot[0], plot[1], plot[2])
-                if var in ['Age', 'BMI']:
-                    sns.boxplot(x=hue , y=var, hue=hue2, palette=athlete_colors, data=athlete_total_df)
-                else:
-                    sns.barplot(x=hue , y=var, hue=hue2, palette=athlete_colors, data=athlete_total_df)
+# athlete_hue_list = ['Sex', 'Winner']
+# athlete_var_list = ['Age', 'BMI', 'Event', 'Medal_Perc']
+# plot = [4,2,0]
+# for hue in athlete_hue_list:
+#     for var in athlete_var_list:   
+#         plot[2] += 1
+#         plt.subplot(plot[0], plot[1], plot[2]) 
+#         if var in ['Age', 'BMI']:
+#             sns.boxplot(x=hue , y=var, palette=athlete_colors, data=athlete_total_df)
+#         else:
+#             sns.barplot(x=hue , y=var, palette=athlete_colors, data=athlete_total_df)
+#         for hue2 in athlete_hue_list:
+#             if hue != hue2:
+#                 plot[2] += 1
+#                 plt.subplot(plot[0], plot[1], plot[2])
+#                 if var in ['Age', 'BMI']:
+#                     sns.boxplot(x=hue , y=var, hue=hue2, palette=athlete_colors, data=athlete_total_df)
+#                 else:
+#                     sns.barplot(x=hue , y=var, hue=hue2, palette=athlete_colors, data=athlete_total_df)
                   
-    plt.gcf().suptitle('Comparison for all athletes')
-    plt.show()
-    plot[2] = 0
+#     plt.gcf().suptitle('Comparison for all athletes')
+#     plt.show()
+#     plot[2] = 0
 
 
 
@@ -155,7 +153,7 @@ plot = [2,1,0]
 for var in ['Event', 'Medal']:    
     plot[2] += 1
     plt.subplot(plot[0],plot[1],plot[2])
-    sns.barplot(x='Year' , y=var, color='C7', data=athlete_total_df)
+    sns.barplot(x='Year' , y=var, data=athlete_total_df)
     plt.title('The number of {var}s by each athlete over time'.format(var=var))
 plt.show()
 plot[2] = 0
@@ -163,103 +161,101 @@ plot[2] = 0
 for var in ['Age', 'BMI']:
     plot[2] += 1
     plt.subplot(plot[0],plot[1],plot[2])
-    sns.boxplot(x='Year' , y=var, color='C7', data=athlete_total_df)
+    sns.boxplot(x='Year' , y=var, data=athlete_total_df)
     plt.title('The {var} of all athlete over time'.format(var=var))
 plt.show()
 
 # Each category
-plot = [2,1,0]
-for hue in athlete_hue_list:
-    for var in ['Event', 'Medal']:    
-        plot[2] += 1
-        plt.subplot(plot[0],plot[1],plot[2])
-        sns.barplot(x='Year' , y=var, hue=hue, palette=athlete_colors, data=athlete_total_df)
-        plt.gcf().suptitle('The average of each Athlete Variable over time by {hue}'.format(var=var, hue=hue))
-    plt.show()
-    plot[2] = 0
+# plot = [2,1,0]
+# for hue in athlete_hue_list:
+#     for var in ['Event', 'Medal']:    
+#         plot[2] += 1
+#         plt.subplot(plot[0],plot[1],plot[2])
+#         sns.barplot(x='Year' , y=var, hue=hue, palette=athlete_colors, data=athlete_total_df)
+#         plt.gcf().suptitle('The average of each Athlete Variable over time by {hue}'.format(var=var, hue=hue))
+#     plt.show()
+#     plot[2] = 0
 
-    for var in ['Age', 'BMI']:    
-        plot[2] += 1
-        plt.subplot(plot[0],plot[1],plot[2])
-        sns.boxplot(x='Year' , y=var, hue=hue, palette=athlete_colors, data=athlete_total_df)
-        plt.gcf().suptitle('The spread of each Athlete Variale over time by {hue}'.format(var=var, hue=hue))
-    plt.show()
-    plot[2] = 0
-
-
+#     for var in ['Age', 'BMI']:    
+#         plot[2] += 1
+#         plt.subplot(plot[0],plot[1],plot[2])
+#         sns.boxplot(x='Year' , y=var, hue=hue, palette=athlete_colors, data=athlete_total_df)
+#         plt.gcf().suptitle('The spread of each Athlete Variale over time by {hue}'.format(var=var, hue=hue))
+#     plt.show()
+#     plot[2] = 0
 
 
+# corr = athlete_total_df[['Medal', 'Sex', 'NOC', 'Age', 'BMI', 'Event', 'Medal_Perc']].corr()
+# sns.heatmap(corr, annot=True) #linewidths=0.5, cmap='coolwarm'
+# plt.show()
 
 
 
 
-######## THE GAMES #######
 
-# Games totals (Games, Year, #Athletes, #Medals, #Male, #Female, #Events)
-games_total_ath = all_df.groupby(['Games']).ID.count().reset_index()
-games_total_ath.columns = ['Games', 'Total_ID'] 
-games_athletes = all_df.groupby(['Games']).ID.nunique().reset_index()
-games_athletes.columns = ['Games', 'Unique_ID'] 
-games_events = all_df.groupby(['Games']).Event.nunique().reset_index()
-games_sports = all_df.groupby(['Games']).Sport.nunique().reset_index()
-games_medals = all_df.groupby(['Games']).Medal.count().reset_index()
-games_countries = all_df.groupby(['Games']).NOC.nunique().reset_index()
-games_male = all_df[all_df['Sex'] == 'M'].groupby('Games').ID.nunique().reset_index()
-games_male.columns = ['Games', 'Male']    
-games_female = all_df[all_df['Sex'] == 'F'].groupby('Games').ID.nunique().reset_index()
-games_female.columns = ['Games', 'Female']
-games_host = all_df[all_df['Country'] == all_df['Host_Country']].groupby('Games').Medal.count().reset_index()
-games_host.columns = ['Games', 'Host_Medal']
-games_visitor = all_df[all_df['Country'] != all_df['Host_Country']].groupby('Games').Medal.count().reset_index()
-games_visitor.columns = ['Games', 'Visitor_Medal']
 
-games_total_df = all_df[['Games', 'Year', 'Season']]
-games_total_df = games_total_df.drop_duplicates()
-games_total_df = games_total_df.merge(games_total_ath, how='outer') \
+
+
+games_var_list = ['Entries', 'Athletes', 'Male', 'Female', 'NOC', 'Event', 'Sport', 'Medal']
+
+# DISTRIBUTION
+all_df2 = pd.read_csv(
+    'F:/TEAN/Portfolio/olympics/data/all_data.csv', index_col=0).reset_index(drop = True)
+all_df2 = all_df2[(all_df2['Season'] == 'Summer') & (all_df2['Year']<1955)]
+games_total_ath = all_df2.groupby(['Year']).ID.count().reset_index()
+games_total_ath.columns = ['Year', 'Entries'] 
+games_athletes = all_df2.groupby(['Year']).ID.nunique().reset_index()
+games_athletes.columns = ['Year', 'Athletes'] 
+games_events = all_df2.groupby(['Year']).Event.nunique().reset_index()
+games_sports = all_df2.groupby(['Year']).Sport.nunique().reset_index()
+games_medals = all_df2.groupby(['Year']).Medal.count().reset_index()
+games_countries = all_df2.groupby(['Year']).NOC.nunique().reset_index()
+games_male = all_df2[all_df2['Sex'] == 'M'].groupby('Year').ID.nunique().reset_index()
+games_male.columns = ['Year', 'Male']    
+games_female = all_df2[all_df2['Sex'] == 'F'].groupby('Year').ID.nunique().reset_index()
+games_female.columns = ['Year', 'Female']
+
+games_host = all_df2[all_df2['NOC'] == all_df2['Host_NOC']].groupby('Year').Medal.count().reset_index()
+games_host.columns = ['Year', 'Host_Medal']
+games_visitor = all_df2[all_df2['NOC'] != all_df2['Host_NOC']].groupby('Year').Medal.count().reset_index()
+games_visitor.columns = ['Year', 'Visitor_Medal']
+games_total_df2 = all_df2[['Year', 'Host_NOC']] #Remove season, games
+games_total_df2 = games_total_df2.drop_duplicates()
+games_total_df2 = games_total_df2.merge(games_total_ath, how='outer') \
                                 .merge(games_athletes, how='outer')\
                                 .merge(games_events, how='outer')\
                                 .merge(games_sports, how='outer')\
                                 .merge(games_medals, how='outer')\
                                 .merge(games_countries, how='outer')\
-                                .merge(games_host, how='outer')\
-                                .merge(games_visitor, how='outer')\
                                 .merge(games_male, how='outer')\
                                .merge(games_female, how='outer')
 
-# Games split up
-winter_games = games_total_df[games_total_df['Season'] == 'Winter']
-summer_games = games_total_df[games_total_df['Season'] == 'Summer']
-
-games_var_list = ['Unique_ID', 'Total_ID', 'Male', 'Female', 'NOC', 'Event', 'Sport', 'Medal']
-
-# DISTRIBUTION
-def games_hist(category, *dfs): 
+def games_hist(*dfs): 
     plt.figure()
-    plt.gcf().suptitle('Distribution of Total Attributes for each Games {category}'.format(category=category))     
+    plt.gcf().suptitle('Distribution of Total Attributes for each Games')     
     plot = [2,4,0] 
 
     for var in games_var_list:
         plot[2] += 1
         plt.subplot(plot[0], plot[1], plot[2])        
         for df in dfs: 
-            plt.hist(df[0][var], label=df[1], color=df[2], histtype='bar', alpha=0.8)          
+            #plt.hist(df[0][var], label=df[1], color=df[2], histtype='bar', alpha=0.8, bins=10)          
             #sns.distplot(df[0][var], label=df[1], kde=True, color=df[2], bins=10)
-            
 
-        plt.xlabel(var)
-        plt.title('Distribution of {var} at each Games'.format(var=var)) 
+            # ax = sns.distplot(df[0][var], kde=False)
+            # ax2 = ax.twinx()
+            # sns.distplot(df[0][var], ax=ax2, kde=True, hist=False)
+            # ax2.set_yticks([])
+
+            sns.distplot(df[0][var], label=df[1], bins=15, kde=False, norm_hist=False)            
+
+        plt.xlabel('Number of {var}s'.format(var=var))
+        #plt.title('Distribution of {var} at each Games'.format(var=var)) 
         plt.legend()
     plt.show()
 
-games_hist('Overall', [games_total_df, 'All', 'C7'])
-games_hist('by Season', [summer_games, 'Summer', 'C1'], [winter_games, 'Winter', 'C0'])
-
-
-
-
-
-
-
+#games_hist('Overall', [games_total_df, 'All', 'C7'])
+games_hist([games_total_df2, 'Before 1955'], [games_total_df, 'After 1955'])
 
 
 
@@ -267,64 +263,159 @@ games_hist('by Season', [summer_games, 'Summer', 'C1'], [winter_games, 'Winter',
 
 ######### THE COUNTRIES ###############
 
-# Country totals (Games, Year, #Athletes, #Medals, #Male, #Female, #Events, Host)
-noc_total_ath = all_df.groupby(['Games', 'NOC']).ID.count().reset_index()
-noc_total_ath.columns = ['Games', 'NOC', 'Total_ID'] 
-noc_athletes = all_df.groupby(['Games', 'NOC']).ID.nunique().reset_index()
-noc_athletes.columns = ['Games', 'NOC', 'Unique_ID'] 
-noc_events = all_df.groupby(['Games', 'NOC']).Event.nunique().reset_index()
-noc_medals = all_df.groupby(['Games', 'NOC']).Medal.count().reset_index()
-noc_male = all_df[all_df['Sex'] == 'M'].groupby(['Games', 'NOC']).ID.nunique().reset_index()
-noc_male.columns = ['Games', 'NOC', 'Male']    
-noc_female = all_df[all_df['Sex'] == 'F'].groupby(['Games', 'NOC']).ID.nunique().reset_index()
-noc_female.columns = ['Games', 'NOC', 'Female']
-
-noc_total_df = all_df[['Games', 'Year', 'Season', 'NOC', 'Country', 'Host_Country']]
-noc_total_df = noc_total_df.drop_duplicates()
-noc_total_df['Host']  = noc_total_df['Country'] == noc_total_df['Host_Country']
-noc_total_df = noc_total_df.merge(noc_total_ath, how='outer') \
-                            .merge(noc_athletes, how='outer') \
-                            .merge(noc_events, how='outer') \
-                            .merge(noc_medals, how='outer') \
-                            .merge(noc_male, how='outer') \
-                            .merge(noc_female, how='outer')
-
-
-country_var_list = ['Total_ID', 'Unique_ID', 'Male', 'Female', 'Event', 'Medal']
-
+country_var_list = ['Entries', 'Athletes', 'Male', 'Female', 'Event', 'Medal']
 
 
 #### Host Medal Percentage vs. Average Percentage ####
 # Create host percentage and regular percentage df
-# Add to seperate winter/summer: all_df[all_df['Season']=='Summer'].groupby.....
-medals_all = all_df.groupby(['Games', 'NOC', 'Country', 'Season']).Medal.count().reset_index()
-medals_all.columns=['Games', 'NOC', 'Country', 'Season', 'Total_Medal']
-medals_all = medals_all.merge(games_medals, how='outer')
+medals_all = all_df.groupby(['Year', 'NOC', 'Country']).Medal.count().reset_index() #remove season
+medals_all.columns=['Year', 'NOC', 'Country', 'Total_Medal'] #remove season
+medals_all = medals_all.merge(games_total_df[['Year', 'Medal']], how='outer')
 medals_all['Medal_Perc'] = round((medals_all.Total_Medal / medals_all.Medal)*100, 2)
-medals_all = round(medals_all.groupby(['NOC', 'Country', 'Season']).Medal_Perc.mean(),2).reset_index()
-medals_all.columns=['NOC', 'Country', 'Season', 'Medal_Perc']
-host_medals = games_total_df[['Games', 'Season', 'Host_NOC', 'Host_Medal_Perc']]
-#host_medals2 = round(host_medals.groupby(['Host_NOC', 'Season']).Host_Medal_Perc.mean(), 2).reset_index()
-host_medals.columns=['Games', 'Season', 'NOC', 'Host_Medal_Perc']
+medals_all = round(medals_all.groupby(['NOC', 'Country']).Medal_Perc.mean(),2).reset_index() #remove season
+medals_all.columns=['NOC', 'Country', 'Medal_Perc'] # remove season
+host_medals = games_total_df[['Year', 'Host_NOC', 'Host_Medal_Perc']] #remove season, games
+host_medals.columns=['Year', 'NOC', 'Host_Medal_Perc'] #remove season, games
 host_difference = pd.merge(host_medals, medals_all, how='left')
 
+
+
+
+
 # Plot of difference
-facet = sns.lmplot(data=host_difference, x='Medal_Perc', y='Host_Medal_Perc', hue='Season', palette=athlete_colors, robust=True)
-plt.plot([0,20],[0,20], 'black', linewidth=2, linestyle='dashed')
-facet.ax.set_xticks(np.arange(0,21,2.5))
-facet.ax.set_yticks(np.arange(0,41,2.5))
+facet = sns.lmplot(data=host_difference, x='Medal_Perc', y='Host_Medal_Perc', robust=True, legend=True)
+plt.plot([0,15],[0,15], 'black', linewidth=2, linestyle='dashed')
+facet.ax.set_xticks(np.arange(0,15,2.5))
+facet.ax.set_yticks(np.arange(0,36,2.5))
+plt.text(10,10, 'a=b')
 facet.ax.ticklabel_format(useOffset=False)
 facet.ax.set_xlim(left=0)
 facet.ax.set_ylim(bottom=0)
 plt.title('The difference in percentage of medals won by host countries')
-plt.legend()
 plt.show()
 
 
 
+noc_colors = sns.color_palette("Paired", n_colors=11)
+noc_colors[-1] = (0.0, 0.0, 0.0)
+
+top_10 = noc_total_df[noc_total_df['Top_10'] == True]
+top_20 = noc_total_df[(noc_total_df['Top_20'] == True) & (noc_total_df['Top_10'] == False)]
+top_20_med = top_20.groupby('Year').median()
+top_20_med['NOC'] = 'ALL'
+#top_20['NOC'] = 'ALL'
+top_20_all = pd.merge(top_10, top_20_med, how='outer')
+
+top_summer_order = top_10.groupby(['NOC'], as_index=False)['Medal'].sum().sort_values(by='Medal', ascending=False).NOC.tolist()
+top_summer_order.append('ALL')
+
+# Scatterplots of top 20 medals against athlete, event and entries
+top_20_not_med = noc_total_df[(noc_total_df['Top_20'] == True) & (noc_total_df['Top_10'] == False)]
+top_20_not_med['NOC'] = 'ALL'
+top_20_not_med_count = top_10.merge(top_20_not_med, how='outer')
+
+plt.figure(figsize=(10,10))
+sns.set_style("whitegrid")
+plt.subplot(1,3,1)
+ax = sns.scatterplot(data=top_20_all, y='Medal', x='Athletes', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
+ax = sns.regplot(data=top_20_not_med_count, y='Medal', x='Athletes', order=2, scatter=False, color='C7')
+ax.legend_.remove()
+ax.set_yticks(range(0,751,50))
+ax.set_xticks(range(0,801,100))
+ax.set_xticklabels([0, '', 100, '', 200, '', 300, '', 400, '', 500, '', 600,'', 700, '', 800])
+ax.set_xlim(left=0)
+ax.set_ylim(bottom=0)
+ax.set_ylabel('Number of Medals') 
+ax.set_xlabel('Number of Unique Athletes') 
+
+plt.subplot(1,3,2)
+ax2 = sns.scatterplot(data=top_20_all, y='Medal', x='Event', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
+ax2.legend_.remove()
+ax2 = sns.regplot(data=top_20_not_med_count, y='Medal', x='Event', order=3, scatter=False, color='C7')
+ax2.set_ylabel('') 
+ax2.set_yticks(range(0,751,50))
+ax2.set_xticks(range(0,301,50))
+ax2.set_xticklabels(range(0,301,50))
+ax2.set_xlim(left=0)
+ax2.set_ylim(bottom=0)
+ax2.set_xlabel('Number of Unique Events') 
+
+plt.subplot(1,3,3)
+ax3 = sns.scatterplot(data=top_20_all, y='Medal', x='Entries', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
+ax3 = sns.regplot(data=top_20_not_med_count, y='Medal', x='Entries', scatter=False, color='C7')
+ax3.set_ylabel('')  
+ax3.set_yticks(range(0,751,50))
+ax3.set_xticks(range(0,2251,50))
+ax3.set_xticklabels([0, '', '', '', '', 250, '', '', '', '', 500,'', '', '', '', 750,'', '', '', '', 1000, '', '', '', '', 1250, '', '', '', '', 1500,'', '', '', '', 1750,'', '', '', '', 2000])
+ax3.set_xlim(left=0)
+ax3.set_ylim(bottom=0)
+ax3.legend(loc='right', bbox_to_anchor=(1.25, 0.5), ncol=1)
+ax3.set_xlabel('Number of Entries') 
+
+plt.subplots_adjust(wspace = 0.1, top=0.9)
+plt.gcf().suptitle('Participation behaviour of Top 20 countries each Year')
+plt.show()
 
 
-# Heatmap of all variables
-corr = noc_total_df[['Unique_ID', 'Total_ID', 'Event', 'Medal', 'Male', 'Female']].corr()
+
+# Heatmap of all
+corr = noc_total_df[['Games_Medal_Perc', 'Medal', 'Games_Entries_Perc', 'Entries', 'Event', 'Athletes', 'Male', 'Female', 'Medal_Perc', 'Unique_Perc']].corr()
 sns.heatmap(corr, annot=True) #linewidths=0.5, cmap='coolwarm'
+plt.title("All")
+plt.yticks(rotation = 0)
+plt.xticks(rotation = 0)
+plt.show()
+
+# Stacked bar chart of Medal Percentage of NOC
+not_top_10 = noc_total_df[noc_total_df['Top_10'] == False]
+not_top_10_sum = not_top_10.groupby('Year').sum().reset_index()
+not_top_10_sum['NOC'] = 'ALL'
+all_count = top_10.merge(not_top_10_sum, how='outer')
+years = noc_total_df.Year.unique().tolist()
+
+sns.set('white')
+ax = plt.subplot()
+bottom = [0]*len(years)
+color = 0
+for noc in top_summer_order:
+    country = all_count[all_count['NOC']==noc]
+    noc_perc = country.Games_Medal_Perc.tolist()    
+    for year in years:
+        if year not in country.Year.unique():
+            noc_perc.insert(years.index(year),0)
+    plt.bar(years, noc_perc, bottom=bottom, color=noc_colors[color], label=noc, width=2, align='center')
+    bottom = [sum(i) for i in zip(bottom, noc_perc)]     
+    color += 1
+
+ax.set_xticks(range(1956,2017,4))
+ax.set_yticks(range(0,101,5))
+plt.xlabel('Years')
+plt.ylabel('Percentage of medals')
+plt.legend()
+plt.title('The Percentage of Medals awarded to each country')
+plt.show()
+
+
+#Swarmplots of top 10 for games_medal_perc and games_entries_perc
+plt.subplot(2,1,1)
+sns.swarmplot(data=top_20_all, x='NOC', y='Games_Entries_Perc', order=top_summer_order, palette=noc_colors)
+plt.subplot(2,1,2)
+sns.swarmplot(data=top_20_all, x='NOC', y='Medal_Perc', order=top_summer_order, palette=noc_colors)
+plt.show()
+
+
+# Distribution of Events per athlete (before and after 1950)
+# noc_total_before_1950 = noc_total_df[noc_total_df['Year']<1950]
+# noc_total_1950 = noc_total_df[noc_total_df['Year']>1950]
+# sns.distplot(noc_total_1950['Unique_Perc'], bins=40, label='After 1950')
+# sns.distplot(noc_total_before_1950['Unique_Perc'], bins=40, label='Before 1950')
+# plt.title('Distribution of Unique Percentage')
+# plt.legend()
+# plt.show()
+
+
+
+
+
+sns.pairplot(noc_total_df, kind='scatter', vars=['Athletes', 'Entries', 'Event', 'Medal'], plot_kws={'color':'C7'}, diag_kws={'color':'C7'})
 plt.show()

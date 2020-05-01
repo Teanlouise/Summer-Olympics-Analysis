@@ -1,13 +1,21 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{About the data}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Athlete Information}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Country Information}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.3}{Host Cities}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.4}{Final Dataset}{section.2}% 6
-\BOOKMARK [1][-]{section.3}{Discussion}{}% 7
-\BOOKMARK [1][-]{section*.8}{Appendices}{}% 8
-\BOOKMARK [1][-]{appendix.A}{Important notes about the data}{}% 9
-\BOOKMARK [1][-]{section*.9}{Appendices}{}% 10
-\BOOKMARK [1][-]{appendix.A}{About the data}{}% 11
-\BOOKMARK [2][-]{subsection.A.1}{Host Cities}{appendix.A}% 12
-\BOOKMARK [2][-]{subsection.A.2}{Combined Data}{appendix.A}% 13
+\BOOKMARK [2][-]{subsection.2.1}{Data Sources}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Athlete Information}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Country Information}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Host Cities}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{Data Parsing}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.6}{Combined Dataset}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.7}{Summer Dataset}{section.2}% 9
+\BOOKMARK [1][-]{section.3}{Discussion}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{How have the games changed?}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{What are the characteristics of an Olympic Athlete?}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{Is there a difference in physicality between athletes and winners?}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.4}{Which countries are the best at the Olympics and how do they differ?}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.5}{Is the competition fair?}{section.3}% 15
+\BOOKMARK [1][-]{section*.8}{Appendices}{}% 16
+\BOOKMARK [1][-]{appendix.A}{Important notes about the data}{}% 17
+\BOOKMARK [1][-]{section*.9}{Appendices}{}% 18
+\BOOKMARK [1][-]{appendix.A}{About the data}{}% 19
+\BOOKMARK [2][-]{subsection.A.1}{Host Cities}{appendix.A}% 20
+\BOOKMARK [2][-]{subsection.A.2}{Combined Data}{appendix.A}% 21

@@ -80,6 +80,8 @@ The topic of this project is the Modern Olympics. The games have been a global c
 \section{About the data}
 To explore and understand how the Olympics has changed over time, a variety of data was collected from numerous sources. There are three main sources broken up over five datasets. 
 
+\subsection{Data Sources}
+
     \subsection{Athlete Information}
     The first set of data that needs to be collected relates to the Athlete's information. This includes their physical characteristics (height, weight, age), their role in the Olympics (sport, medal, country) and when they competed (season, year). This information is available for public download on Kaggle under the title '120 years of Olympic history (1896 - 2018)'. This dataset was created by scraping from \url{www.sport-reference.com}. The data is broken down into two files:
 
@@ -120,7 +122,7 @@ To explore and understand how the Olympics has changed over time, a variety of d
         \end{enumerate}
 
     \subsection{Host Cities}
-    The finally set of data is location of each of the games. The 'City' is included as a column in 'athlete\_events.csv', however it is not paired with a country which is needed to compare an athlete's country with where they are competing. This data was not readily available as a data file but the information was found on \url{https://architectureofthegames.net/olympic-host-cities/}. The data was copied into two separate text files as is; summer and winter. Using python the files were read, reformatted and combined to create a csv file. The file contains the year, city, country and season of each Olympic games. The code is in Appendix A. 
+    The finally set of data is location of each of the games. The 'City' is included as a column in 'athlete\_events.csv', however it is not paired with a country which is needed to compare an athlete's country with where they are competing. This data was not readily available as a data file but the information was found on \url{https://architectureofthegames.net/olympic-host-cities/}. The data was copied into two separate text files as is; summer and winter. Using python the files were read, reformatted and combined to create a csv file. The NOC was also added as an additional column manually using noc\_regions.csv. The file contains the year, city, country, NOC and season of each Olympic games. The code is in Appendix A. 
         \begin{figure} [H]
             \centering
             \includegraphics[width=0.6\textwidth, frame]
@@ -128,24 +130,19 @@ To explore and understand how the Olympics has changed over time, a variety of d
             \caption{host\_city.csv}                  
         \end{figure}  
 
-    \subsection{Final Dataset}
-    From these files, a new dataset was created using pandas (and article research) to refine the data selection, remove redundancies, combine related variables and update incorrect data to ensure a cleaner dataset for the visualisations. These steps were taken to combine the following five datasets:
+\subsection{Data Parsing}
+    \subsection{Combined Dataset}
+    From all of the above files, a new dataset was created using pandas (and article research) to refine the data selection, remove redundancies, combine related variables and update incorrect data to ensure a cleaner dataset for the visualisations. These steps were taken to combine the following five datasets:
 
         \begin{enumerate}
-            \item Remove 'Art Competitions' under 'Sport'
-            \item Remove 'Name', 'Team', 'Games', 'Event', 'Sport' from athlete\_events.csv
+            \item Remove 'Art Competitions' 
+            \item Remove 'Name', 'Team', 'Games', 'Season from athlete\_events.csv
                 \begin{itemize}
-                    \item 'Name' this is not relevant
-                    \item 'Team' sometimes contradicts NOC/Country
-                    \item 'Games' is duplicate, already split into 'Year' and 'Season'
-                    \item 'Event' is not relevant and not consistently
-                    \item 'Sport' is not relevant        
-                \end{itemize}
-            \item Remove Years 1896-1920 from athlete\_events.csv
-                \begin{itemize}
-                    \item Women didn't compete in 1896
-                    \item Winter Games didn't commence until 1924
-                \end{itemize}
+                    \item 'Name' - the identification of the athletes is not important
+                    \item 'Team' - sometimes contradicts NOC/Country
+                    \item 'Games' - duplicate of year and season
+                    \item 'Season' - only looking at summer games
+                \end{itemize}            
             \item Make NOC codes consistent for countries that have changed.            
             % EUA not in athlete_events
             % ROC already accounted for 
@@ -159,7 +156,7 @@ To explore and understand how the Olympics has changed over time, a variety of d
                     \item Serbia (SRB): SCG (2004-2006), SRB (1912, 2008-2018), YUG (1920-2002)
                 \end{itemize}            
             \item Add column COUNTRY by matching ‘NOC’ with the same from noc\_regions.csv
-            \item Update CITY in athlete\_events.csv to match more common names used in host\_cities.csv
+            \item Update host CITY in athlete\_events.csv to match more common names used in host\_cities.csv
                 \begin{itemize}
                     \item Athina to Athens
                     \item Roma to Rome 
@@ -168,7 +165,9 @@ To explore and understand how the Olympics has changed over time, a variety of d
                     \item Torino to Turin
                     \item Sankt Moritz to St Moritz
                 \end{itemize}                 
-            \item Add column HOST COUNTRY by matching ‘country’ with same from host\_city.csv
+            \item Add column HOST NOC by matching ‘NOC’ with same from host\_city.csv
+            \item Add column for BMI
+            \item Add column with boolean value corresponding to have a medal winner
             \item Add column GDP by matching ‘country’ in gdp.csv
             \item Add column POPULATION by matching ‘country’ in population.csv  
         \end{enumerate}
@@ -180,9 +179,42 @@ To explore and understand how the Olympics has changed over time, a variety of d
             \caption{all\_data.csv}               
         \end{figure} 
 
+    \subsection{Summer Dataset}
+    After looking at the data and testing some preliminary graphs, there were a few additional changes to be made.
+    \item Remove Years 1896-1952 from athlete\_events.csv
+        \begin{itemize}
+            \item Women didn't compete in 1896
+            \item Winter Games didn't commence until 1924
+            \item China and USSR joined in 1952
+            \item The recording of more than 40\% of weight and height started in 1956. Over 90\% since 1960.
+            \item The GDP and population is not available until 1960
+        \end{itemize}
+    \item Remove 'Winter' season, as not only will this overcomplicate the results and comparisons, but also Summer has a lot more data which will skew the outputs.
+        \begin{itemize}
+            \item Summer has 2.3 times more countries each year
+            \item Summer has 2.3 times more sports each year
+            \item Summer has 4 times more athletes competing
+            \item summer has 3 times more events
+        \end{itemize}
+    \item Remove 'Season' and 'Games' columns
+    
+    With these changes, a new table was created with just Summer Olympics from 1956 with the above data.       
 
 \section{Discussion}
-The prediction of medal winners will be explored through a number of topics. Each of these will be presented as a comparison between the winter and summer games. Data will be considered from 1924 (when the Winter Olympics were introduced), except for BMI, GDP and population which will be taken from 1960 (when data is collected for majority of points for these variables). The variables ‘NOC’, ‘year’ and ‘season’ are used for all analysis. From current knowledge these are possible visualisations that can be explored:
+The prediction of medal winners will be explored through a number of topics. Due to the difference n data size and added complexity, as explained in the data section, only data from the Summer Olympics since 1956 will be considered. 
+
+
+\subsection{How have the games changed?}
+
+\subsection{What are the characteristics of an Olympic Athlete?}
+
+\subsection{Is there a difference in physicality between athletes and winners?}
+\subsection{Which countries are the best at the Olympics and how do they differ?}
+\subsection{Is the competition fair?}
+
+
+
+
     \begin{itemize}
         \item The distribution of the number of events and medals [Histogram (\#events, \#medal)]
         

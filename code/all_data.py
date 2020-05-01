@@ -49,8 +49,8 @@ all_df = all_df.drop(["Name", "Team"], axis=1)
 #checkpoint('REMOVE EXTRA', all_df, True, extra_df)
 
 # 3. Remove years
-years_df = all_df[all_df['Year'].isin(range(1896,1921))]
-all_df = all_df.drop(years_df.index)
+# years_df = all_df[all_df['Year'].isin(range(1896,1921))]
+# all_df = all_df.drop(years_df.index)
 #checkpoint('REMOVE YEARS', all_df, True, years_df)
 
 # 4. Make NOC codes consistent for countries that have changed.
@@ -86,11 +86,21 @@ all_df = all_df.merge(host_df[['Host_Country', 'Host_NOC', 'City']]) \
                                 .reset_index(drop = True)
 #checkpoint('ADD HOST COUNTRY', all_df)
 
+# 8. Add BMI columns [Weight (kg) / Height^2 (m)]
+all_df['BMI'] = all_df.apply(lambda x: round(x.Weight/((x.Height/100)**2), 2), axis=1)
 
+# 9. Add boolean to mark who is a medal winner 
+all_df['Winner'] = all_df.Medal.notna()
 
 
 # 8. Add GDP
 # 9. Add Population
+
+
+# Summer 1956 Olympics Equistrian events in Sweden - update to reflect actual host Australia
+all_df.loc[(all_df.Host_NOC == 'SWE'),'Host_NOC'] = 'AUS'
+all_df.loc[(all_df.City == 'Stockholm'),'City'] = 'Melbourne'
+all_df.loc[(all_df.Host_Country == 'Sweden'),'Host_Country'] = 'Australia'
 
 # WRITE TO FILE
 all_df.to_csv('F:/TEAN/Portfolio/olympics/data/all_data.csv')

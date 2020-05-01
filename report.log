@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.4.7)  21 APR 2020 18:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.4.7)  30 APR 2020 23:26
 entering extended mode
 **f:/TEAN/Portfolio/olympics/report.tex
 (f:/TEAN/Portfolio/olympics/report.tex
@@ -465,7 +465,7 @@ File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
 File: listings.cfg 2019/09/10 1.8c listings configuration
 ))
 Package: listings 2019/09/10 1.8c (Carsten Heinz)
- (f:\TEAN\Portfolio\olympics\report.aux)
+ (f:/TEAN\Portfolio\olympics\report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
@@ -554,7 +554,6 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 66.
 LaTeX Info: Redefining \pageref on input line 66.
 LaTeX Info: Redefining \nameref on input line 66.
- (f:\TEAN\Portfolio\olympics\report.out) (f:\TEAN\Portfolio\olympics\report.out)
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
@@ -572,59 +571,115 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 70.
  [1
 
-{C:/Users/teanm/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] (f:\TEAN\Portfolio\olympics\report.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 4.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 4.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 4.
-)
+{C:/Users/teanm/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 \tf@toc=\write4
 \openout4 = `report.toc'.
 
  [2]
-<./images/history_data.png, id=81, 1299.85625pt x 550.055pt>
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 86.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 86.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 86.
+<./images/history_data.png, id=17, 1299.85625pt x 550.055pt>
 File: ./images/history_data.png Graphic file (type png)
 <use ./images/history_data.png>
-Package pdftex.def Info: ./images/history_data.png  used on input line 91.
+Package pdftex.def Info: ./images/history_data.png  used on input line 93.
 (pdftex.def)             Requested size: 459.51054pt x 194.44415pt.
-<./images/noc_data.png, id=82, 544.0325pt x 265.99374pt>
+ [3]
+<./images/noc_data.png, id=28, 544.0325pt x 265.99374pt>
 File: ./images/noc_data.png Graphic file (type png)
 <use ./images/noc_data.png>
-Package pdftex.def Info: ./images/noc_data.png  used on input line 98.
+Package pdftex.def Info: ./images/noc_data.png  used on input line 100.
 (pdftex.def)             Requested size: 290.22107pt x 141.90546pt.
- [3 <./images/history_data.png>]
-<./images/gdp_data.png, id=92, 1138.2525pt x 202.7575pt>
+<./images/gdp_data.png, id=29, 1138.2525pt x 202.7575pt>
 File: ./images/gdp_data.png Graphic file (type png)
 <use ./images/gdp_data.png>
-Package pdftex.def Info: ./images/gdp_data.png  used on input line 110.
+Package pdftex.def Info: ./images/gdp_data.png  used on input line 112.
 (pdftex.def)             Requested size: 459.51054pt x 81.85336pt.
-<./images/pop_data.png, id=93, 1137.24875pt x 215.80624pt>
+<./images/pop_data.png, id=30, 1137.24875pt x 215.80624pt>
 File: ./images/pop_data.png Graphic file (type png)
 <use ./images/pop_data.png>
-Package pdftex.def Info: ./images/pop_data.png  used on input line 117.
+Package pdftex.def Info: ./images/pop_data.png  used on input line 119.
 (pdftex.def)             Requested size: 459.51054pt x 87.19688pt.
-<./images/host_data.png, id=95, 311.66437pt x 126.4725pt>
+ [4 <./images/history_data.png> <./images/noc_data.png> <./images/gdp_data.png>]
+<./images/host_data.png, id=45, 311.66437pt x 126.4725pt>
 File: ./images/host_data.png Graphic file (type png)
 <use ./images/host_data.png>
-Package pdftex.def Info: ./images/host_data.png  used on input line 127.
+Package pdftex.def Info: ./images/host_data.png  used on input line 129.
 (pdftex.def)             Requested size: 290.22107pt x 117.77258pt.
- [4 <./images/noc_data.png> <./images/gdp_data.png> <./images/pop_data.png>] [5 <./images/host_data.png>]
-<./images/new_data.png, id=119, 849.1725pt x 418.56375pt>
+ [5 <./images/pop_data.png> <./images/host_data.png>]
+Overfull \hbox (13.54416pt too wide) in paragraph at lines 159--161
+[]\OT1/cmr/m/n/12 Update host CITY in ath-lete[]events.csv to match more com-mon names used in host[]cities.csv 
+ []
+
+<./images/new_data.png, id=60, 849.1725pt x 418.56375pt>
 File: ./images/new_data.png Graphic file (type png)
 <use ./images/new_data.png>
-Package pdftex.def Info: ./images/new_data.png  used on input line 179.
+Package pdftex.def Info: ./images/new_data.png  used on input line 178.
 (pdftex.def)             Requested size: 459.51054pt x 226.50006pt.
- [6 <./images/new_data.png>] [7]pdfTeX warning (ext4): destination with the same identifier (name{appendix.A}) has been already used, duplicate ignored
+
+f:/TEAN/Portfolio/olympics/report.tex:184: LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.184     \item R
+                 emove Years 1896-1952 from athlete\_events.csv
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 184
+[][]
+ []
+
+[6 <./images/new_data.png>]
+
+f:/TEAN/Portfolio/olympics/report.tex:192: LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.192     \item R
+                 emove 'Winter' season, as not only will this overcomplicate...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 192
+[][]
+ []
+
+
+f:/TEAN/Portfolio/olympics/report.tex:199: LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.199     \item R
+                 emove 'Season' and 'Games' columns
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 199
+[][]
+ []
+
+[7] [8] [9]pdfTeX warning (ext4): destination with the same identifier (name{appendix.A}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.246 \section{About the data}
+l.278 \section{About the data}
                                ("C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstlang1.sty"
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 249.
- (f:\TEAN\Portfolio\olympics\code/host_countries.py
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 281.
+ (f:/TEAN\Portfolio\olympics\code/host_countries.py
 Overfull \hbox (66.20218pt too wide) in paragraph at lines 25--27
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -640,29 +695,56 @@ File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 33.
-) [8] (f:\TEAN\Portfolio\olympics\code/all_data.py [9])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 263.
- [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 263.
- (f:\TEAN\Portfolio\olympics\report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 263.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 263.
-Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 33DF453F2CD5B68BAD6B33ACE29C5109;735.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 263.
+) [10] (f:/TEAN\Portfolio\olympics\code/all_data.py [11]
+Overfull \hbox (9.80228pt too wide) in paragraph at lines 84--85
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (122.60208pt too wide) in paragraph at lines 90--92
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[12]
+Overfull \hbox (164.90201pt too wide) in paragraph at lines 100--101
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (38.00223pt too wide) in paragraph at lines 103--105
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 295.
+ [13]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 295.
+ (f:/TEAN\Portfolio\olympics\report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 295.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 295.
+
+
+Package rerunfilecheck Warning: File `report.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `report.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  D39DBCDBA16869EF8E7DB9670FDDE349;1412.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 295.
  ) 
 Here is how much of TeX's memory you used:
- 14011 strings out of 480934
- 227734 string characters out of 2899918
- 736938 words of memory out of 3000000
- 29420 multiletter control sequences out of 15000+200000
+ 14023 strings out of 480934
+ 227758 string characters out of 2899918
+ 741975 words of memory out of 3000000
+ 29415 multiletter control sequences out of 15000+200000
  539265 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,9n,96p,952b,1968s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\teanm\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/teanm/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/teanm/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/teanm/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/teanm/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/teanm/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/teanm/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/teanm/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on f:\TEAN\Portfolio\olympics\report.pdf (10 pages, 440671 bytes).
+Output written on f:/TEAN\Portfolio\olympics\report.pdf (13 pages, 444613 bytes).
 PDF statistics:
- 350 PDF objects out of 1000 (max. 8388607)
- 180 named destinations out of 1000 (max. 500000)
- 135 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 337 PDF objects out of 1000 (max. 8388607)
+ 204 named destinations out of 1000 (max. 500000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
