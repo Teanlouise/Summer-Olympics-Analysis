@@ -1,21 +1,21 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{About the data}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{Data Sources}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Athlete Information}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.3}{Country Information}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.4}{Host Cities}{section.2}% 6
-\BOOKMARK [2][-]{subsection.2.5}{Data Parsing}{section.2}% 7
-\BOOKMARK [2][-]{subsection.2.6}{Combined Dataset}{section.2}% 8
-\BOOKMARK [2][-]{subsection.2.7}{Summer Dataset}{section.2}% 9
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Athlete Information}{subsection.2.1}% 4
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Country Information}{subsection.2.1}% 5
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Host Cities}{subsection.2.1}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Data Parsing}{section.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Combined Dataset}{subsection.2.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Totals}{subsection.2.2}% 9
 \BOOKMARK [1][-]{section.3}{Discussion}{}% 10
-\BOOKMARK [2][-]{subsection.3.1}{How have the games changed?}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.2}{What are the characteristics of an Olympic Athlete?}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.3}{Is there a difference in physicality between athletes and winners?}{section.3}% 13
-\BOOKMARK [2][-]{subsection.3.4}{Which countries are the best at the Olympics and how do they differ?}{section.3}% 14
-\BOOKMARK [2][-]{subsection.3.5}{Is the competition fair?}{section.3}% 15
-\BOOKMARK [1][-]{section*.8}{Appendices}{}% 16
-\BOOKMARK [1][-]{appendix.A}{Important notes about the data}{}% 17
-\BOOKMARK [1][-]{section*.9}{Appendices}{}% 18
-\BOOKMARK [1][-]{appendix.A}{About the data}{}% 19
-\BOOKMARK [2][-]{subsection.A.1}{Host Cities}{appendix.A}% 20
-\BOOKMARK [2][-]{subsection.A.2}{Combined Data}{appendix.A}% 21
+\BOOKMARK [2][-]{subsection.3.1}{The Games}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{The Athletes}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{The Athletes}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.4}{The Countries}{section.3}% 14
+\BOOKMARK [1][-]{section*.14}{Appendices}{}% 15
+\BOOKMARK [1][-]{appendix.A}{Important notes about the data}{}% 16
+\BOOKMARK [1][-]{section*.15}{Appendices}{}% 17
+\BOOKMARK [1][-]{appendix.A}{About the data}{}% 18
+\BOOKMARK [2][-]{subsection.A.1}{Host Cities}{appendix.A}% 19
+\BOOKMARK [2][-]{subsection.A.2}{Combined Data}{appendix.A}% 20
+\BOOKMARK [2][-]{subsection.A.3}{Combined Data}{appendix.A}% 21

@@ -15,10 +15,7 @@ noc_total_df = pd.read_csv(
     'F:/TEAN/Portfolio/olympics/data/noc_total.csv', index_col=0)
 
 all_df = pd.read_csv(
-    'F:/TEAN/Portfolio/olympics/data/summer_data.csv', index_col=0)
-
-
-
+    'F:/TEAN/Portfolio/olympics/data/all_data.csv', index_col=0)
 
 #### THE ATHLETE ########
 
@@ -30,6 +27,7 @@ non_medal_athlete = athlete_total_df[athlete_total_df['Winner'] == False]
 
 athlete_var_list = ['Age', 'BMI', 'Event', 'Medal']
 athlete_colors ={'F': 'C6', 'M': 'C9', False: 'C4', True: 'C2'}
+
 
 # DISTRIBUTION
 def athlete_hist(category, *dfs): 
@@ -60,6 +58,16 @@ def athlete_hist(category, *dfs):
 #athlete_hist('Overall', [athlete_total_df, 'All', 'C7'])
 athlete_hist('by Gender',[male_athlete, 'Male', 'C9'], [female_athlete, 'Female', 'C6'])
 #athlete_hist('by Winner', [medal_athlete, 'Medal Winner', 'C2'], [non_medal_athlete, 'No Medal', 'C4'])
+
+
+plot = [1,2,0]
+for var in ['Age', 'BMI']:
+    plot[2] += 1
+    plt.subplot(plot[0],plot[1],plot[2])
+    sns.distplot(male_athlete[var], kde=True, color='C9')
+    sns.distplot(female_athlete[var], kde=True, color='C6')
+    plt.title('The {var} of all athlete over time'.format(var=var))
+plt.show()
 
 
 # RELATIONSHIP
@@ -158,12 +166,24 @@ for var in ['Event', 'Medal']:
 plt.show()
 plot[2] = 0
 
-for var in ['Age', 'BMI']:
-    plot[2] += 1
-    plt.subplot(plot[0],plot[1],plot[2])
-    sns.boxplot(x='Year' , y=var, data=athlete_total_df)
-    plt.title('The {var} of all athlete over time'.format(var=var))
+
+
+
+
+plot[2] += 1
+plt.subplot(plot[0],plot[1],plot[2])
+sns.boxplot(x='Year' , y='Age', data=athlete_total_df, hue='Sex',palette=athlete_colors)
+plt.title('The {var} of all athlete over time'.format(var=var))
+plot[2] += 1
+plt.subplot(plot[0],plot[1],plot[2])
+sns.violinplot(x='Year', y='BMI', data=athlete_total_df, hue='Sex', palette=athlete_colors, split=True)
+plt.title('The {var} of all athlete over time'.format(var=var))
 plt.show()
+plot[2] = 0
+
+
+
+
 
 # Each category
 # plot = [2,1,0]
@@ -199,36 +219,11 @@ plt.show()
 games_var_list = ['Entries', 'Athletes', 'Male', 'Female', 'NOC', 'Event', 'Sport', 'Medal']
 
 # DISTRIBUTION
-all_df2 = pd.read_csv(
-    'F:/TEAN/Portfolio/olympics/data/all_data.csv', index_col=0).reset_index(drop = True)
-all_df2 = all_df2[(all_df2['Season'] == 'Summer') & (all_df2['Year']<1955)]
-games_total_ath = all_df2.groupby(['Year']).ID.count().reset_index()
-games_total_ath.columns = ['Year', 'Entries'] 
-games_athletes = all_df2.groupby(['Year']).ID.nunique().reset_index()
-games_athletes.columns = ['Year', 'Athletes'] 
-games_events = all_df2.groupby(['Year']).Event.nunique().reset_index()
-games_sports = all_df2.groupby(['Year']).Sport.nunique().reset_index()
-games_medals = all_df2.groupby(['Year']).Medal.count().reset_index()
-games_countries = all_df2.groupby(['Year']).NOC.nunique().reset_index()
-games_male = all_df2[all_df2['Sex'] == 'M'].groupby('Year').ID.nunique().reset_index()
-games_male.columns = ['Year', 'Male']    
-games_female = all_df2[all_df2['Sex'] == 'F'].groupby('Year').ID.nunique().reset_index()
-games_female.columns = ['Year', 'Female']
+games_total_before = pd.read_csv(
+    'F:/TEAN/Portfolio/olympics/data/games_total_draft.csv', index_col=0).reset_index(drop = True)
+games_total_before = games_total_before[(games_total_before['Season'] == 'Summer') & (games_total_before['Year']<1955)]
 
-games_host = all_df2[all_df2['NOC'] == all_df2['Host_NOC']].groupby('Year').Medal.count().reset_index()
-games_host.columns = ['Year', 'Host_Medal']
-games_visitor = all_df2[all_df2['NOC'] != all_df2['Host_NOC']].groupby('Year').Medal.count().reset_index()
-games_visitor.columns = ['Year', 'Visitor_Medal']
-games_total_df2 = all_df2[['Year', 'Host_NOC']] #Remove season, games
-games_total_df2 = games_total_df2.drop_duplicates()
-games_total_df2 = games_total_df2.merge(games_total_ath, how='outer') \
-                                .merge(games_athletes, how='outer')\
-                                .merge(games_events, how='outer')\
-                                .merge(games_sports, how='outer')\
-                                .merge(games_medals, how='outer')\
-                                .merge(games_countries, how='outer')\
-                                .merge(games_male, how='outer')\
-                               .merge(games_female, how='outer')
+
 
 def games_hist(*dfs): 
     plt.figure()
@@ -246,16 +241,16 @@ def games_hist(*dfs):
             # ax2 = ax.twinx()
             # sns.distplot(df[0][var], ax=ax2, kde=True, hist=False)
             # ax2.set_yticks([])
+            sns.distplot(df[0][var], label=df[1], bins=15, kde=True, norm_hist=False)
+        plt.xlabel('Number of {var}'.format(var=var))
+        
 
-            sns.distplot(df[0][var], label=df[1], bins=15, kde=False, norm_hist=False)            
-
-        plt.xlabel('Number of {var}s'.format(var=var))
         #plt.title('Distribution of {var} at each Games'.format(var=var)) 
-        plt.legend()
+    plt.legend(loc='right', bbox_to_anchor=(0, 0), ncol=1)
     plt.show()
 
 #games_hist('Overall', [games_total_df, 'All', 'C7'])
-games_hist([games_total_df2, 'Before 1955'], [games_total_df, 'After 1955'])
+games_hist([games_total_before, 'Before 1955'], [games_total_df, 'After 1955'])
 
 
 
@@ -282,12 +277,12 @@ host_difference = pd.merge(host_medals, medals_all, how='left')
 
 
 
-# Plot of difference
-facet = sns.lmplot(data=host_difference, x='Medal_Perc', y='Host_Medal_Perc', robust=True, legend=True)
+# Plot of difference with hosting
+facet = sns.lmplot(data=host_difference, x='Medal_Perc', y='Host_Medal_Perc', robust=True, palette=['C1'])
 plt.plot([0,15],[0,15], 'black', linewidth=2, linestyle='dashed')
 facet.ax.set_xticks(np.arange(0,15,2.5))
 facet.ax.set_yticks(np.arange(0,36,2.5))
-plt.text(10,10, 'a=b')
+plt.text(8,7, 'x=y')
 facet.ax.ticklabel_format(useOffset=False)
 facet.ax.set_xlim(left=0)
 facet.ax.set_ylim(bottom=0)
@@ -295,7 +290,7 @@ plt.title('The difference in percentage of medals won by host countries')
 plt.show()
 
 
-
+# Get the top 20 countries
 noc_colors = sns.color_palette("Paired", n_colors=11)
 noc_colors[-1] = (0.0, 0.0, 0.0)
 
@@ -306,55 +301,21 @@ top_20_med['NOC'] = 'ALL'
 #top_20['NOC'] = 'ALL'
 top_20_all = pd.merge(top_10, top_20_med, how='outer')
 
-top_summer_order = top_10.groupby(['NOC'], as_index=False)['Medal'].sum().sort_values(by='Medal', ascending=False).NOC.tolist()
-top_summer_order.append('ALL')
+not_top_10 = noc_total_df[noc_total_df['Top_10'] == False]
+not_top_10_sum = not_top_10.groupby('Year').sum().reset_index()
+not_top_10_sum['NOC'] = 'ALL'
+all_count = top_10.merge(not_top_10_sum, how='outer')
+years = noc_total_df.Year.unique().tolist()
 
-# Scatterplots of top 20 medals against athlete, event and entries
+# Get data of all not in top 10 and set NOC to ALL
 top_20_not_med = noc_total_df[(noc_total_df['Top_20'] == True) & (noc_total_df['Top_10'] == False)]
 top_20_not_med['NOC'] = 'ALL'
 top_20_not_med_count = top_10.merge(top_20_not_med, how='outer')
 
-plt.figure(figsize=(10,10))
-sns.set_style("whitegrid")
-plt.subplot(1,3,1)
-ax = sns.scatterplot(data=top_20_all, y='Medal', x='Athletes', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
-ax = sns.regplot(data=top_20_not_med_count, y='Medal', x='Athletes', order=2, scatter=False, color='C7')
-ax.legend_.remove()
-ax.set_yticks(range(0,751,50))
-ax.set_xticks(range(0,801,100))
-ax.set_xticklabels([0, '', 100, '', 200, '', 300, '', 400, '', 500, '', 600,'', 700, '', 800])
-ax.set_xlim(left=0)
-ax.set_ylim(bottom=0)
-ax.set_ylabel('Number of Medals') 
-ax.set_xlabel('Number of Unique Athletes') 
+# Set the order of the top 10
+top_summer_order = top_10.groupby(['NOC'], as_index=False)['Medal'].sum().sort_values(by='Medal', ascending=False).NOC.tolist()
+top_summer_order.append('ALL')
 
-plt.subplot(1,3,2)
-ax2 = sns.scatterplot(data=top_20_all, y='Medal', x='Event', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
-ax2.legend_.remove()
-ax2 = sns.regplot(data=top_20_not_med_count, y='Medal', x='Event', order=3, scatter=False, color='C7')
-ax2.set_ylabel('') 
-ax2.set_yticks(range(0,751,50))
-ax2.set_xticks(range(0,301,50))
-ax2.set_xticklabels(range(0,301,50))
-ax2.set_xlim(left=0)
-ax2.set_ylim(bottom=0)
-ax2.set_xlabel('Number of Unique Events') 
-
-plt.subplot(1,3,3)
-ax3 = sns.scatterplot(data=top_20_all, y='Medal', x='Entries', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
-ax3 = sns.regplot(data=top_20_not_med_count, y='Medal', x='Entries', scatter=False, color='C7')
-ax3.set_ylabel('')  
-ax3.set_yticks(range(0,751,50))
-ax3.set_xticks(range(0,2251,50))
-ax3.set_xticklabels([0, '', '', '', '', 250, '', '', '', '', 500,'', '', '', '', 750,'', '', '', '', 1000, '', '', '', '', 1250, '', '', '', '', 1500,'', '', '', '', 1750,'', '', '', '', 2000])
-ax3.set_xlim(left=0)
-ax3.set_ylim(bottom=0)
-ax3.legend(loc='right', bbox_to_anchor=(1.25, 0.5), ncol=1)
-ax3.set_xlabel('Number of Entries') 
-
-plt.subplots_adjust(wspace = 0.1, top=0.9)
-plt.gcf().suptitle('Participation behaviour of Top 20 countries each Year')
-plt.show()
 
 
 
@@ -366,14 +327,9 @@ plt.yticks(rotation = 0)
 plt.xticks(rotation = 0)
 plt.show()
 
-# Stacked bar chart of Medal Percentage of NOC
-not_top_10 = noc_total_df[noc_total_df['Top_10'] == False]
-not_top_10_sum = not_top_10.groupby('Year').sum().reset_index()
-not_top_10_sum['NOC'] = 'ALL'
-all_count = top_10.merge(not_top_10_sum, how='outer')
-years = noc_total_df.Year.unique().tolist()
 
-sns.set('white')
+# Stacked bar chart of Medal Percentage of NOC
+sns.set_style("ticks")
 ax = plt.subplot()
 bottom = [0]*len(years)
 color = 0
@@ -396,12 +352,74 @@ plt.title('The Percentage of Medals awarded to each country')
 plt.show()
 
 
+
 #Swarmplots of top 10 for games_medal_perc and games_entries_perc
-plt.subplot(2,1,1)
+#plt.subplot(2,1,1)
 sns.swarmplot(data=top_20_all, x='NOC', y='Games_Entries_Perc', order=top_summer_order, palette=noc_colors)
-plt.subplot(2,1,2)
-sns.swarmplot(data=top_20_all, x='NOC', y='Medal_Perc', order=top_summer_order, palette=noc_colors)
+# plt.subplot(2,1,2)
+# sns.swarmplot(data=top_20_all, x='NOC', y='Medal_Perc', order=top_summer_order, palette=noc_colors)
 plt.show()
+
+
+# Scatterplots of top 20 medals against athlete, event and entries
+plt.figure(figsize=(10,10))
+sns.set_style("whitegrid")
+plt.subplot(2,2,1)
+ax = sns.scatterplot(data=top_20_all, y='Medal', x='Athletes', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
+ax = sns.regplot(data=top_20_not_med_count, y='Medal', x='Athletes', order=2, scatter=False, color='C7')
+ax.legend_.remove()
+ax.set_yticks(range(0,751,50))
+ax.set_xticks(range(0,801,100))
+ax.set_xticklabels([0, '', 100, '', 200, '', 300, '', 400, '', 500, '', 600,'', 700, '', 800])
+ax.set_xlim(left=0)
+ax.set_ylim(bottom=0)
+ax.set_ylabel('Number of Medals') 
+ax.set_xlabel('Number of Unique Athletes') 
+
+plt.subplot(2,2,2)
+ax2 = sns.scatterplot(data=top_20_all, y='Medal', x='Event', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
+ax2.legend_.remove()
+ax2 = sns.regplot(data=top_20_not_med_count, y='Medal', x='Event', order=3, scatter=False, color='C7')
+ax2.set_ylabel('') 
+ax2.set_yticks(range(0,751,50))
+ax2.set_xticks(range(0,301,50))
+ax2.set_xticklabels(range(0,301,50))
+ax2.set_xlim(left=0)
+ax2.set_ylim(bottom=0)
+ax2.set_xlabel('Number of Unique Events') 
+
+plt.subplot(2,2,3)
+sns.residplot('Medal', 'Athletes', data=top_20_not_med_count, order=2)
+plt.subplot(2,2,4)
+sns.residplot('Medal', 'Events', data=top_20_not_med_count, order=3)
+
+
+# plt.subplot(1,3,3)
+# ax3 = sns.scatterplot(data=top_20_all, y='Medal', x='Entries', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
+# ax3 = sns.regplot(data=top_20_not_med_count, y='Medal', x='Entries', scatter=False, color='C7')
+# ax3.set_ylabel('')  
+# ax3.set_yticks(range(0,751,50))
+# ax3.set_xticks(range(0,2251,50))
+# ax3.set_xticklabels([0, '', '', '', '', 250, '', '', '', '', 500,'', '', '', '', 750,'', '', '', '', 1000, '', '', '', '', 1250, '', '', '', '', 1500,'', '', '', '', 1750,'', '', '', '', 2000])
+# ax3.set_xlim(left=0)
+# ax3.set_ylim(bottom=0)
+# ax3.legend(loc='right', bbox_to_anchor=(1.25, 0.5), ncol=1)
+# ax3.set_xlabel('Number of Entries') 
+
+plt.subplots_adjust(wspace = 0.1, top=0.9)
+plt.gcf().suptitle('Participation behaviour of Top 20 countries each Year')
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Distribution of Events per athlete (before and after 1950)
@@ -415,7 +433,14 @@ plt.show()
 
 
 
-
-
-sns.pairplot(noc_total_df, kind='scatter', vars=['Athletes', 'Entries', 'Event', 'Medal'], plot_kws={'color':'C7'}, diag_kws={'color':'C7'})
+sns.pairplot(top_20_all, kind='scatter', vars=['Athletes', 'Entries', 'Event', 'Medal'], hue='NOC', palette=noc_colors)
 plt.show()
+
+g = sns.PairGrid(top_20_all, palette=noc_colors)
+g.map_upper(plt.scatter)
+g.map_lower(sns.kdeplot)
+g.map_diag(sns.kdeplot, lw=3, legend=False)
+plt.show()
+
+# sns.pairplot(top_20_all, kind='scatter', vars=['Athletes', 'Entries', 'Event', 'Medal'], plot_kws={'color':'C7'}, diag_kws={'color':'C7'})
+# plt.show()

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.4.7)  17 APR 2020 19:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=pdflatex 2020.4.7)  2 MAY 2020 22:19
 entering extended mode
 **f:/TEAN/Portfolio/olympics/proposal/proposal.tex
 (f:/TEAN/Portfolio/olympics/proposal/proposal.tex
@@ -743,7 +743,7 @@ File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 \c@mdf@env@ii=\count332
 \c@mdf@zref@counter=\count333
 Package zref Info: New property: mdf@pagevalue on input line 895.
-) (f:\TEAN\Portfolio\olympics\proposal\proposal.aux)
+) (f:/TEAN\Portfolio\olympics\proposal\proposal.aux)
 \openout1 = `proposal.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
@@ -831,7 +831,7 @@ LaTeX Info: Redefining \nameref on input line 61.
 LaTeX Info: Redefining \ref on input line 61.
 LaTeX Info: Redefining \pageref on input line 61.
 LaTeX Info: Redefining \nameref on input line 61.
-(f:\TEAN\Portfolio\olympics\proposal\proposal.out) (f:\TEAN\Portfolio\olympics\proposal\proposal.out)
+(f:/TEAN\Portfolio\olympics\proposal\proposal.out) (f:/TEAN\Portfolio\olympics\proposal\proposal.out)
 \@outlinefile=\write4
 \openout4 = `proposal.out'.
 
@@ -848,15 +848,15 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 90.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 90.
-<../images/noc_data.png, id=4, 544.0325pt x 265.99374pt>
-File: ../images/noc_data.png Graphic file (type png)
-<use ../images/noc_data.png>
-Package pdftex.def Info: ../images/noc_data.png  used on input line 97.
+<./images/noc_data.png, id=4, 544.0325pt x 265.99374pt>
+File: ./images/noc_data.png Graphic file (type png)
+<use ./images/noc_data.png>
+Package pdftex.def Info: ./images/noc_data.png  used on input line 97.
 (pdftex.def)             Requested size: 290.22107pt x 141.90546pt.
-<../images/history_data.png, id=5, 1299.85625pt x 550.055pt>
-File: ../images/history_data.png Graphic file (type png)
-<use ../images/history_data.png>
-Package pdftex.def Info: ../images/history_data.png  used on input line 103.
+<./images/history_data.png, id=5, 1299.85625pt x 550.055pt>
+File: ./images/history_data.png Graphic file (type png)
+<use ./images/history_data.png>
+Package pdftex.def Info: ./images/history_data.png  used on input line 103.
 (pdftex.def)             Requested size: 483.69687pt x 204.6838pt.
 
 Overfull \hbox (0.79999pt too wide) in paragraph at lines 102--104
@@ -865,47 +865,47 @@ Overfull \hbox (0.79999pt too wide) in paragraph at lines 102--104
 
 [1{C:/Users/teanm/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
- <../images/noc_data.png>]
-<../images/gdp_data.png, id=20, 1138.2525pt x 202.7575pt>
-File: ../images/gdp_data.png Graphic file (type png)
-<use ../images/gdp_data.png>
-Package pdftex.def Info: ../images/gdp_data.png  used on input line 113.
+ <./images/noc_data.png>]
+<./images/gdp_data.png, id=20, 1138.2525pt x 202.7575pt>
+File: ./images/gdp_data.png Graphic file (type png)
+<use ./images/gdp_data.png>
+Package pdftex.def Info: ./images/gdp_data.png  used on input line 113.
 (pdftex.def)             Requested size: 483.69687pt x 86.16306pt.
 
 Overfull \hbox (0.79999pt too wide) in paragraph at lines 112--114
  [][] 
  []
 
-<../images/pop_data.png, id=21, 1137.24875pt x 215.80624pt>
-File: ../images/pop_data.png Graphic file (type png)
-<use ../images/pop_data.png>
-Package pdftex.def Info: ../images/pop_data.png  used on input line 119.
+<./images/pop_data.png, id=21, 1137.24875pt x 215.80624pt>
+File: ./images/pop_data.png Graphic file (type png)
+<use ./images/pop_data.png>
+Package pdftex.def Info: ./images/pop_data.png  used on input line 119.
 (pdftex.def)             Requested size: 483.69687pt x 91.78723pt.
 
 Overfull \hbox (0.79999pt too wide) in paragraph at lines 118--120
  [][] 
  []
 
-<../images/host_data.png, id=23, 311.66437pt x 126.4725pt>
-File: ../images/host_data.png Graphic file (type png)
-<use ../images/host_data.png>
-Package pdftex.def Info: ../images/host_data.png  used on input line 127.
+<./images/host_data.png, id=23, 311.66437pt x 126.4725pt>
+File: ./images/host_data.png Graphic file (type png)
+<use ./images/host_data.png>
+Package pdftex.def Info: ./images/host_data.png  used on input line 127.
 (pdftex.def)             Requested size: 290.22107pt x 117.77258pt.
-[2 <../images/history_data.png> <../images/gdp_data.png> <../images/pop_data.png> <../images/host_data.png>]
-<../images/new_data.png, id=32, 849.1725pt x 418.56375pt>
-File: ../images/new_data.png Graphic file (type png)
-<use ../images/new_data.png>
-Package pdftex.def Info: ../images/new_data.png  used on input line 144.
+[2 <./images/history_data.png> <./images/gdp_data.png> <./images/pop_data.png> <./images/host_data.png>]
+<./images/new_data.png, id=32, 849.1725pt x 418.56375pt>
+File: ./images/new_data.png Graphic file (type png)
+<use ./images/new_data.png>
+Package pdftex.def Info: ./images/new_data.png  used on input line 144.
 (pdftex.def)             Requested size: 483.69687pt x 238.41776pt.
 
 Overfull \hbox (0.79999pt too wide) in paragraph at lines 143--145
  [][] 
  []
 
-[3 <../images/new_data.png>]
+[3 <./images/new_data.png>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 188.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 188.
- (f:\TEAN\Portfolio\olympics\proposal\proposal.aux)
+ (f:/TEAN\Portfolio\olympics\proposal\proposal.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 188.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 188.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
@@ -913,15 +913,15 @@ Package rerunfilecheck Info: File `proposal.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 188.
  ) 
 Here is how much of TeX's memory you used:
- 14347 strings out of 480934
- 228787 string characters out of 2899918
+ 14346 strings out of 480934
+ 228720 string characters out of 2899918
  570617 words of memory out of 3000000
  29943 multiletter control sequences out of 15000+200000
  537091 words of font info for 40 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  47i,11n,45p,963b,583s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\teanm\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/teanm/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/teanm/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/teanm/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on f:\TEAN\Portfolio\olympics\proposal\proposal.pdf (3 pages, 340454 bytes).
+Output written on f:/TEAN\Portfolio\olympics\proposal\proposal.pdf (3 pages, 340454 bytes).
 PDF statistics:
  60 PDF objects out of 1000 (max. 8388607)
  14 named destinations out of 1000 (max. 500000)

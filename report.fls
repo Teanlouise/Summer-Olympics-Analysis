@@ -179,8 +179,14 @@ INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\refcount\refcou
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\refcount\refcount.sty
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\generic\gettitlestring\gettitlestring.sty
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\generic\gettitlestring\gettitlestring.sty
-OUTPUT f:\TEAN\Portfolio\olympics\report.out
+INPUT f:\TEAN\Portfolio\olympics\report.out
+INPUT f:\TEAN\Portfolio\olympics\report.out
+INPUT f:\TEAN\Portfolio\olympics\report.out
+INPUT f:\TEAN\Portfolio\olympics\report.out
 OUTPUT f:\TEAN\Portfolio\olympics\report.pdf
+INPUT f:\TEAN\Portfolio\olympics\report.out
+INPUT f:\TEAN\Portfolio\olympics\report.out
+OUTPUT f:\TEAN\Portfolio\olympics\report.out
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdflscape\pdflscape.sty
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdflscape\pdflscape.sty
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\lscape.sty
@@ -192,9 +198,9 @@ INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmsy1
 INPUT C:\Users\teanm\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr17.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
-OUTPUT f:\TEAN\Portfolio\olympics\report.toc
+INPUT f:\TEAN\Portfolio\olympics\report.toc
+INPUT f:\TEAN\Portfolio\olympics\report.toc
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
-INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmtt12.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr8.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr6.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmmi12.tfm
@@ -203,38 +209,68 @@ INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmmi6
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmsy8.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmsy6.tfm
-INPUT images\history_data.png
-INPUT .\images\history_data.png
-INPUT .\images\history_data.png
-INPUT .\images\history_data.png
-INPUT .\images\history_data.png
+OUTPUT f:\TEAN\Portfolio\olympics\report.toc
+INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmtt12.tfm
+INPUT images\data\athlete_events.png
+INPUT .\images\data\athlete_events.png
+INPUT .\images\data\athlete_events.png
+INPUT .\images\data\athlete_events.png
+INPUT .\images\data\athlete_events.png
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr10.tfm
-INPUT images\noc_data.png
-INPUT .\images\noc_data.png
-INPUT .\images\noc_data.png
-INPUT .\images\noc_data.png
-INPUT .\images\noc_data.png
+INPUT images\data\noc_regions.png
+INPUT .\images\data\noc_regions.png
+INPUT .\images\data\noc_regions.png
+INPUT .\images\data\noc_regions.png
+INPUT .\images\data\noc_regions.png
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\jknappen\ec\tcrm1200.tfm
-INPUT images\gdp_data.png
-INPUT .\images\gdp_data.png
-INPUT .\images\gdp_data.png
-INPUT .\images\gdp_data.png
-INPUT .\images\gdp_data.png
-INPUT images\pop_data.png
-INPUT .\images\pop_data.png
-INPUT .\images\pop_data.png
-INPUT .\images\pop_data.png
-INPUT .\images\pop_data.png
-INPUT images\host_data.png
-INPUT .\images\host_data.png
-INPUT .\images\host_data.png
-INPUT .\images\host_data.png
-INPUT .\images\host_data.png
-INPUT images\new_data.png
-INPUT .\images\new_data.png
-INPUT .\images\new_data.png
-INPUT .\images\new_data.png
-INPUT .\images\new_data.png
+INPUT images\data\worldbank_gdp.png
+INPUT .\images\data\worldbank_gdp.png
+INPUT .\images\data\worldbank_gdp.png
+INPUT .\images\data\worldbank_gdp.png
+INPUT .\images\data\worldbank_gdp.png
+INPUT images\data\worldbank_gdp.png
+INPUT .\images\data\worldbank_gdp.png
+INPUT images\data\host_countries.png
+INPUT .\images\data\host_countries.png
+INPUT .\images\data\host_countries.png
+INPUT .\images\data\host_countries.png
+INPUT .\images\data\host_countries.png
+INPUT images\data\games_draft.png
+INPUT .\images\data\games_draft.png
+INPUT .\images\data\games_draft.png
+INPUT .\images\data\games_draft.png
+INPUT .\images\data\games_draft.png
+INPUT images\data\all_data.png
+INPUT .\images\data\all_data.png
+INPUT .\images\data\all_data.png
+INPUT .\images\data\all_data.png
+INPUT .\images\data\all_data.png
+INPUT images\data\athlete_total.png
+INPUT .\images\data\athlete_total.png
+INPUT .\images\data\athlete_total.png
+INPUT .\images\data\athlete_total.png
+INPUT .\images\data\athlete_total.png
+INPUT images\data\games_total.png
+INPUT .\images\data\games_total.png
+INPUT .\images\data\games_total.png
+INPUT .\images\data\games_total.png
+INPUT .\images\data\games_total.png
+INPUT images\data\noc_total.png
+INPUT .\images\data\noc_total.png
+INPUT .\images\data\noc_total.png
+INPUT .\images\data\noc_total.png
+INPUT .\images\data\noc_total.png
+INPUT images\graph\games_histogram.png
+INPUT .\images\graph\games_histogram.png
+INPUT .\images\graph\games_histogram.png
+INPUT .\images\graph\games_histogram.png
+INPUT .\images\graph\games_histogram.png
+INPUT images\graph\athlete_age_boxplot.png
+INPUT .\images\graph\athlete_age_boxplot.png
+INPUT .\images\graph\athlete_age_boxplot.png
+INPUT .\images\graph\athlete_age_boxplot.png
+INPUT .\images\graph\athlete_age_boxplot.png
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr17.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.sty
@@ -242,13 +278,15 @@ INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlan
 INPUT f:\TEAN\Portfolio\olympics\code\host_countries.py
 INPUT f:\TEAN\Portfolio\olympics\code\host_countries.py
 INPUT f:\TEAN\Portfolio\olympics\code\host_countries.py
-INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmti12.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd
 INPUT f:\TEAN\Portfolio\olympics\code\all_data.py
 INPUT f:\TEAN\Portfolio\olympics\code\all_data.py
 INPUT f:\TEAN\Portfolio\olympics\code\all_data.py
+INPUT f:\TEAN\Portfolio\olympics\code\totals.py
+INPUT f:\TEAN\Portfolio\olympics\code\totals.py
+INPUT f:\TEAN\Portfolio\olympics\code\totals.py
 INPUT f:\TEAN\Portfolio\olympics\report.aux
 INPUT f:\TEAN\Portfolio\olympics\report.out
 INPUT f:\TEAN\Portfolio\olympics\report.out

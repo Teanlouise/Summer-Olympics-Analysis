@@ -38,13 +38,93 @@ top_summer_order.append('ALL')
 
 
 
+######### THE COUNTRIES ###############
+
+country_var_list = ['Entries', 'Athletes', 'Male', 'Female', 'Event', 'Medal']
+
+
+#### Host Medal Percentage vs. Average Percentage ####
+# Create host percentage and regular percentage df
+medals_all = all_df.groupby(['Year', 'NOC', 'Country']).Medal.count().reset_index() #remove season
+medals_all.columns=['Year', 'NOC', 'Country', 'Total_Medal'] #remove season
+medals_all = medals_all.merge(games_total_df[['Year', 'Medal']], how='outer')
+medals_all['Medal_Perc'] = round((medals_all.Total_Medal / medals_all.Medal)*100, 2)
+medals_all = round(medals_all.groupby(['NOC', 'Country']).Medal_Perc.mean(),2).reset_index() #remove season
+medals_all.columns=['NOC', 'Country', 'Medal_Perc'] # remove season
+host_medals = games_total_df[['Year', 'Host_NOC', 'Host_Medal_Perc']] #remove season, games
+host_medals.columns=['Year', 'NOC', 'Host_Medal_Perc'] #remove season, games
+host_difference = pd.merge(host_medals, medals_all, how='left')
+
+
+
+# Get the top 20 countries
+noc_colors = sns.color_palette("Paired", n_colors=11)
+noc_colors[-1] = (0.0, 0.0, 0.0)
+
+top_10 = noc_total_df[noc_total_df['Top_10'] == True]
+top_20 = noc_total_df[(noc_total_df['Top_20'] == True) & (noc_total_df['Top_10'] == False)]
+top_20_med = top_20.groupby('Year').median()
+top_20_med['NOC'] = 'ALL'
+#top_20['NOC'] = 'ALL'
+top_20_all = pd.merge(top_10, top_20_med, how='outer')
+
+not_top_10 = noc_total_df[noc_total_df['Top_10'] == False]
+not_top_10_sum = not_top_10.groupby('Year').sum().reset_index()
+not_top_10_sum['NOC'] = 'ALL'
+all_count = top_10.merge(not_top_10_sum, how='outer')
+years = noc_total_df.Year.unique().tolist()
+
+# Set the order of the top 10
+top_summer_order = top_10.groupby(['NOC'], as_index=False)['Medal'].sum().sort_values(by='Medal', ascending=False).NOC.tolist()
+top_summer_order.append('ALL')
+top_20_not_med = noc_total_df[(noc_total_df['Top_20'] == True) & (noc_total_df['Top_10'] == False)]
+top_20_not_med['NOC'] = 'ALL'
+top_20_not_med_count = top_10.merge(top_20_not_med, how='outer')
 
 
 
 
+#df1 = noc_total_df[(noc_total_df['Year'] != 1984) & (noc_total_df['Year'] != 2012) & (noc_total_df['Year'] != 2004)]
+#print(df1)
+print(noc_total_df[noc_total_df['NOC'] == 'CHN'])
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+#df = top_20_all[(top_20_all['NOC'] != 'CHN')]
+df = noc_total_df[(noc_total_df['NOC'] != 'CHN')]
+z =df.Games_Medal_Perc
+x =df.Population
+y =df.GDP
+ax.scatter(x, y, z, c='r', marker='o')
+ax.set_xlabel('Population (millions)')
+ax.set_ylabel('GDP (current US$ billions)')
+ax.set_zlabel('Percentage of Games Medals Won')
+plt.show()
+
+
+print(hel)
 
 
 
+
+mean = np.zeros(3)
+cov = np.random.uniform(.2, .4, (3, 3))
+cov += cov.T
+cov[np.diag_indices(3)] = 1
+data = np.random.multivariate_normal(mean, cov, 100)
+df = pd.DataFrame(data, columns=["X", "Y", "Z"])
+
+def corrfunc(x, y, **kws):
+    r, _ = stats.pearsonr(x, y)
+    ax = plt.gca()
+    ax.annotate("r = {:.2f}".format(r),
+                xy=(.1, .9), xycoords=ax.transAxes)
+
+g = sns.PairGrid(df, palette=["red"])
+g.map_upper(plt.scatter, s=10)
+g.map_diag(sns.distplot, kde=False)
+g.map_lower(sns.kdeplot, cmap="Blues_d")
+g.map_lower(corrfunc)
 
 
 
@@ -383,17 +463,7 @@ athlete_hue_list = ['Sex', 'Winner']
 # sns.set_style(style='whitegrid')
 
 
-#from mpl_toolkits.mplot3d import Axes3D
-# fig = plt.figure()
-# ax = fig.add_subplot(111, projection='3d')
-# x =athlete_total_df.Age
-# y =athlete_total_df.BMI
-# z =athlete_total_df.Medal
-# ax.scatter(x, y, z, c='r', marker='o')
-# ax.set_xlabel('X Label')
-# ax.set_ylabel('Y Label')
-# ax.set_zlabel('Z Label')
-# plt.show()
+
 
 
 
