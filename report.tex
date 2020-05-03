@@ -228,6 +228,7 @@ To explore and understand how the Olympics has changed over time, a variety of d
                     \item Group the athletes by their ID so there is only one row per athlete, rather than a row for each entry by that athlete
                     \item Count the number of different sports the athlete competes in
                     \item Count the number of entries the athlete has in the summer dataset
+                    \item Update the sex labels from 'M' to 'Male' and 'F' to 'Female'
                 \end{itemize}
                 \begin{figure} [H]
                     \centering
@@ -310,24 +311,159 @@ The prediction of medal winners will be explored through a number of topics. Due
     By doing so it is evident that the games have changed since the first 60 years of competition. All of the factors are considerably higher after 1955. Notably the number of women prior to 1955 was never higher than 500 competitors, but after this time, at least half of the games has seen more than 3,000 female competitors. Also, the number of countries competing has more than doubled with 6 of the games in the last 60 years seeing approximately 200 countries competing. From this graph it is evident that the Summer Olympic games have significantly diversified and become more accessible to more athletes around the world.
 
     \subsection{The Athletes}
-    Without the athletes there would be no Olympic Games, so naturally the next topic to explore is the characteristics of the Olympiads themselves. Besides their country and their sport of choice, the defining characteristics of an athlete are their Age and BMI. Other interesting factors include how many events they compete in and how many medals on average an athlete wins.
+    Without the athletes there would be no Olympic Games, so naturally the next topic to explore is the characteristics of the Olympiads themselves. Besides their country and their sport of choice, the defining characteristics of an athlete are their Age and BMI. Other interesting factors include how many events they compete in and how many medals on average an athlete wins. All of these graphs use the data of the totals for each athlete from athlete\_total.csv.
     
-    Firstly, the below boxplot shows the central tendency of athlete's age over the last 60 years of games. Additionally, the data are split by an athlete's sex to show the difference between male and female over time. A boxplot shows the spread of data as a compact alternative to a histogram, that highlights the general nature of the data. It identifies the median, 25th percentile and 75th percentile as the box, as well as low and high adjusters with outliers consistently. 
+        \subsubsection{Age}
+        To explore the change in age of athletes the below boxplot shows the central tendency of athlete's age over the last 60 years of games. Additionally, the data are split by an athlete's sex to show the difference between male and female over time. A boxplot shows the spread of data as a compact alternative to a histogram, that highlights the general nature of the data. It identifies the median and interquartile range (25th to 75th) percentile as the box, as well as low and high adjusters with outliers consistently. Due to the high number of athletes, a boxplot was the ultimate choice to display this data as the median and interquartile range are not impacted by outliers allowing a clear view of the general trends of the athletes. 
         \begin{figure} [H]
             \centering
             \includegraphics[width=\textwidth, frame]
                 {./images/graph/athlete_age_boxplot.png}      
                 \caption{Distribution of Age of Athletes by Year} 
         \end{figure}
-    From this boxplot it is evident that the age and BMI of athletes has remaining fairly consistent through ....
+         
+        \textbf{Male:} From this boxplot it is evident that the age of male athletes has remained fairly consistent.  Overall the median age for males has fluctuated between 24 and 26 years old (where it currently stands) and the interquartile range has simply moved up one year.
+        \begin{itemize}
+            \item Median: 
+                \begin{itemize}
+                    \item 25 years old: 1956 to 1976, then dropped slightly to,
+                    \item 24 years old: 1980 to 1984, before returning to,
+                    \item 25 years old: 1988 to 1996, then increasing to 
+                    \item 26 years old: 2000 to 2016. same.
+                \end{itemize}
+            \item Interquartile Range:
+                \begin{itemize}
+                    \item The 25th percentile value over time has only increased from 22 to 23 years old.
+                    \item The 75th percentile has increased from 29 to 30 years old
+                \end{itemize}
+        \end{itemize}
 
+        \textbf{Female:} From the boxplot, it is clear that female athletes in general are younger than men with lower percentile values. The median age of woman has increased by four years from 21 to 25 years old. Also, the interquartile range for females has seen a more dramatic change from 19 and 24, to 22 and 29. Not only has the range shifted up by 3 years but also expanded by 2 years. As the histogram showed that the number of women competing has increased then it can also be assumed that more older woman are becoming eligible to compete as well. 
+        \begin{itemize}
+            \item Median:
+                \begin{itemize}
+                    \item 21 years old: 1956, then fluctuating to 
+                    \item 22 years old: 1960 to 1984, then increase today
+                    \item 23 years old: 1988, then increase again to
+                    \item 24 years old: 1992 to 1996, then increase again to 
+                    \item 25 years old: 2000 to 2016.
+                \end{itemize}
+            \item Interquartile range:
+                \begin{itemize}
+                    \item The 25th percentile decreased from 19 to 18 until 1976, before continuing to increase to 22 in 2004.
+                    \item The 75th percentile value has continued to increase from 24 to 29. 
+                \end{itemize}
+        \end{itemize}
+        Another interesting observation is that male athletes always appear to have more outliers in their age, however the number of outliers for women is increasing.
+
+        \subsubsection{BMI}
+        The BMI of an athlete is determined by athlete's height and weight. The equation is weight (kg) multiplied by the height (m) squared. To explore another method of viewed the central tendency distribution of a variable the change in athlete's BMI has been shown with a violin plot. Similar to the boxplot, it shows the median, interquartile range and outliers. The main difference is that instead of clear guidelines for the ranges and specific points representing the outliers, the violin plot represents this data with a kernel density estimation to show very general trends. This makes it perfect options for BMI as the interquartile range is small, compared to the extension of the outliers. The graph is also split between gender to see the difference. 
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=\textwidth, frame]
+                {./images/graph/athlete_BMI_violinplot.png}      
+                \caption{Distribution of BMI of Athletes by Year} 
+        \end{figure}
+        From the plot, it is again evident that the values for woman are slightly lower. It is also clear that the general trend of BMI within the male and female groups are the roughly the same, with similar sized density shapes. The median and interquartile ranges for both genders has remained almost consistent for the last 60 years. Males range form 22 to 25, with a median of approximately 23.5, whilst females range from 20 to 23 with a median of approximately 21.5. The biggest variation over time has been the number of outliers. It appears in the last 5 games the variation of outlier has increased since 1992 from 50 to 65. This graph suggests that the BMI of most athletes has not changed in the last 60 years, though in some events a higher BMI is advantageous.
+
+        \subsubsection{Events}
+        The next aspect of an athlete is the number of events they participate in. By exploring this topic, some insights into how diverse the athlete is can be gained. To plot this data a bar graph was used, due to the very small variation in the behaviour of most athletes and the extremes of the outliers. A bar graph calculates the mean and a confidence interval around this estimate which is displayed with error bars. 
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=\textwidth, frame]
+                {./images/graph/athlete_event_barplot.png}      
+                \caption{Distribution of Average Number of Events per Athlete} 
+        \end{figure}
+        The first observation to note is that the number of events competed in by each athlete increase by almost 1.5 events from the previous year in 1984, 2004 and 2002.  Taking another look at the data and games histogram, it is evident that there are a least 3 games that experience at very large increase in number of entries and medals awarded. 
+
+        Males: The number of events on average of only changed from approximately 1.4 events to 1.25 over the last 60 years, not considering the three outlying years. The error bar has also remained the same and small. 
+
+        Females: From 1956 to 1960, the number of events per female is almost 1 event extra than males. The trend of being higher continues for the rest of the games, although it decreases considerably by 2000. Ignoring the outlying years, the number of events per female has decreased from 2.3 (almost 1.5 events more than males) to be almost the same average as males of 1.25 events per athlete. Also, the error bar decreases greatly to be consistent with males from 1988. These trends could be related to the greatly increased number of female athletes and opportunities for more diversified athletes, as per the histogram.         
+
+        \subsubsection{Medals}
+        Another aspect of an athletes participation behaviour at the Olympics, and potentially the most important to them, is the number of medals awarded to each athlete. By exploring this data it may provide insight into whether the medals are being awarded to a variety of athletes, or if the games rely on 'super' athletes winning all of the medals. This data is displayed using a point plot. Similar to the bar plot it computes the mean and a confidence interval with error bars, additionally it joins the points together to help visualise a pattern over time. 
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=\textwidth, frame]
+                {./images/graph/athlete_medal_pointplot.png}      
+                \caption{Distribution of Average Number of Medals per Athlete} 
+        \end{figure}
+        Again this plot shows a spike for athletes in 1984, 2004 and 2008, which is explained previously. additionally, The higher values in 1956, 1976 and 1980 maybe be explained by boycotts by various nations during these year, decreasing the competition in events and allowing an individual athlete more opportunity to win medals. On average an event will have 8 places, 3 of which will receive a medal. This means if each entry at the Olympics was filled by a different athlete the average number of medals should be 0.375 for completely equal distribution.          
+
+        Males: Taking into consideration the outlying years, the average number of medals has remained around 0.15 per athlete. Also, the error bars are greater than those seen in the average number of events plot, suggesting more variation from the average. Since the average number of events per male athlete is 1.25 and as mentioned the average number of medals for equal distribution is 0.375, this suggests that more athletes are not winning a medal, whilst a smaller group are dominating the medal count.
+
+        Females: On the graph it is apparent that female athletes on average win more medals, though the gap between male and female as been closing since 1988. The error bars are also much greater than that of male athletes. The average, ignoring outlying years, for number of medals awarded to each athletes has decreased from 0.25 to 0.18. The difference between males and females follows the same pattern as the average number of events, suggesting that the same females are winning the medals across a number of events. 
+
+        \subsubsection{Medal Winners}
+        Naturally the next topic to discuss is whether the physical characteristics are an athlete who wins a medal and an athlete who does not differs. Since the average number of medals were athlete is only approximately 0.15 there is a big difference in the amount of data points for medal winners and non medal athletes. Therefore, to be able to view the relationship between the two the below are two QQ (Quantile-Quantile) plot for age and BMI respectively. The percentiles of each dataset are calculated and then the corresponding percentiles are plotted against each other. This creates an even number of points for each dataset to be able to compare and view the general trend of their relationship. The standard 45 degree angle is included on the plots to show the linear line if the two datasets had equal percentiles. Additionally the median (50th percentile) and interquartile range (between 25th and 75th percentile) have been included for reference.
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=\textwidth, frame]
+                {./images/graph/athlete_difference_qqplot.png}      
+                \caption{Comparison of Age and BMI for Medal Winners and Non Medal Athletes} 
+        \end{figure}
+        
+        First looking at the comparison of age on the left. From the age of 18 to 26 years old the percentiles are either equal or slightly toward the medal winners, meaning the corresponding percentile of the medal winners is slightly higher. This reverses from this point until around 35, meaning the medal winners are slightly younger. Then from the age of 35 the percentiles of the non medal percentiles start to pull away more to a difference of about 2 years. Therefore, medal winners are generally older than 18 and younger than 35 years old. 
+
+        Now looking at the BMI on the right, the percentile points are obviously more compact with less variation. It appears that almost 90\% of the data points sit between a BMI of 18.5 and 26.5. There is little deviation from the 45 degree angle, though medal winners appear to have a slightly higher BMI than other athletes. Together these graphs show that the percentiles of each dataset are almost identical. This indicates that the age and BMI of an athlete does not determine how competitive they are going to be at their chosen event.
+
+        It is also important to note that since there are much less data on medal winners than non-medal athletes the percentiles may have some larger gaps, especially for the non-medal athletes.
     
-
-
-
-    \subsection{The Athletes}
-
     \subsection{The Countries}
+
+
+        \subsubsection{Medal Distribution}
+
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=\textwidth, frame]
+                {./images/graph/countries_medals_stacked.png}      
+                \caption{Breakdown of percentage of medals awarded to each country} 
+        \end{figure}
+
+        \subsubsection{Participation Behaviour}
+
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=\textwidth, frame]
+                {./images/graph/countries_stats_heatmap.png}      
+                \caption{Correlation of participation behaviour attributes of countries } 
+        \end{figure}
+
+
+        \subsubsection{Pecentage of Entries}
+
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=\textwidth, frame]
+                {./images/graph/countries_entryperc_swarm.png}      
+                \caption{Correlation of participation behaviour attributes of countries } 
+        \end{figure}
+
+
+
+
+
+
+        \subsubsection{Hosting}
+        Over the last 60 years, there have been 16 Summer Olympics hosted by and 14 nations have hosted, with both United States and Australia hosting twice. The Olympics have been historically very popular with fans around the world travelling or tuning in to watch the action. It is a well known trope that sporting teams do better when they have the home advantage. The below scatterplot explores whether the same can be said about the Summer Olympics. On of the advantages of a scatterplot is being able to compare two variables and view the relationship between them. The average percentage of medals won by each host country during games when they didn't host, are compared against the percentage (average for AUS and USA) won when hosting. Each point represents a year at the Olympic Games. Included on the plot is a 45 degree angle line to show the points at which the two percentages are equal i.e. hosting has no effect on the percentage of medals won. Additionally on the graph is a linear regression model with a 95\% confidence interval using robust to de-weight outliers. 
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=\textwidth, frame]
+                {./images/graph/countries_host_lmplot.png}      
+                \caption{Comparison of percentage of medals won by host countries} 
+        \end{figure}
+        From the graph it is very clear that hosting does impact the overall percentage of medals won by the host country for that year. There are two instances where the percentage is only slightly less, once from a country whom only generally wins around 1.9\% of medals and another country around 14.5\%. Besides these two cases the performance of countries when hosting is far greater than when visiting. The linear regression model seems to be a good fit up until when the confidence interval becomes greater for countries who win more than 5.5\% medals normally. The outlying values may be explained by boycotts. However it is clear that there is a stronger relationship between hosting and winning more medals than normal. 
+
+
+
+
+
 
 
 
@@ -403,8 +539,13 @@ The prediction of medal winners will be explored through a number of topics. Due
 \lstinputlisting[language=python]{code/all_data.py}
 
 \pagebreak
-\subsection{Combined Data}
+\subsection{Totals}
 \lstinputlisting[language=python]{code/totals.py}
+
+
+\pagebreak
+\subsection{Discussion}
+\lstinputlisting[language=python]{code/analysis.py}
 
 
 

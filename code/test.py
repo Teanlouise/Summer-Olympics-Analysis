@@ -17,9 +17,99 @@ games_total_df = pd.read_csv(
     'F:/TEAN/Portfolio/olympics/data/games_total.csv', index_col=0)
 noc_total_df = pd.read_csv(
     'F:/TEAN/Portfolio/olympics/data/noc_total.csv', index_col=0)
-
+host_difference = pd.read_csv(
+    'F:/TEAN/Portfolio/olympics/data/host_difference.csv', index_col=0)
 noc_colors = sns.color_palette("Paired", n_colors=11)
 noc_colors[-1] = (0.0, 0.0, 0.0)
+
+
+
+# Get the top 10 and top 20 countries
+top_10 = noc_total_df[noc_total_df['Top_10'] == True]
+top_20 = noc_total_df[(noc_total_df['Top_20'] == True) & (noc_total_df['Top_10'] == False)]
+top_20['NOC'] = 'Rest'
+### Get the median of 11-20 countries
+top_20_med = top_20.groupby('Year').median()
+top_20_med['NOC'] = 'Rest'
+top_20_med_all = pd.merge(top_10, top_20_med, how='outer')
+
+#### Sum the values of all countries not in top 10
+not_top_10 = noc_total_df[noc_total_df['Top_10'] == False]
+not_top_10_sum = not_top_10.groupby('Year').sum().reset_index()
+not_top_10_sum['NOC'] = 'Rest'
+all_count = top_10.merge(not_top_10_sum, how='outer')
+##### Set the order of the top 10
+top_summer_order = top_10.groupby(['NOC'], as_index=False)['Medal'].sum().sort_values(by='Medal', ascending=False).NOC.tolist()
+top_summer_order.append('Rest')
+#### Set the colors for top 10 countries and 'OTHER'
+noc_colors = sns.color_palette("Paired", n_colors=11)
+noc_colors[-1] = (0.0, 0.0, 0.0)
+
+print(top_20)
+print(top_20_med)
+print(top_20_med_all)
+
+sns.set()
+
+#Swarmplots of top 10 for games_medal_perc and games_entries_perc
+plt.figure(figsize=[18,5])
+ax = plt.subplot()
+sns.swarmplot(data=top_20_med_all, x='NOC', y='Games_Entries_Perc', order=top_summer_order, palette=noc_colors)
+plt.xlabel('The Top 20 Countries')
+plt.ylabel('Percentage of Total Games Entries')
+ax.set_yticklabels(['{}%'.format(x) for x in ax.get_yticks()])
+plt.xlabel('The Top 20 Countries')
+plt.ylabel('Medals per Entry')
+plt.title('The Percentage of Entries from the top 20 countries')
+legend = top_summer_order[:-1]
+legend.append('Top 11 to 20')
+plt.legend(legend)
+plt.savefig('./images/graph/countries_entryperc_swarm.png')
+plt.show()
+
+
+
+
+
+print(hel)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 top_10 = noc_total_df[noc_total_df['Top_10'] == True]
 top_20 = noc_total_df[(noc_total_df['Top_20'] == True) & (noc_total_df['Top_10'] == False)]
@@ -82,6 +172,22 @@ top_20_not_med['NOC'] = 'ALL'
 top_20_not_med_count = top_10.merge(top_20_not_med, how='outer')
 
 
+sns.set()
+athlete_var_list = [['Age', [10, 45], '(years)'], ['BMI', [15,35], '']]
+medal_athlete = athlete_total_df[athlete_total_df['Winner']]
+non_medal_athlete = athlete_total_df[athlete_total_df['Winner'] == False]
+
+
+
+        
+
+
+
+
+
+
+print(hel)
+
 
 
 #df1 = noc_total_df[(noc_total_df['Year'] != 1984) & (noc_total_df['Year'] != 2012) & (noc_total_df['Year'] != 2004)]
@@ -102,7 +208,7 @@ ax.set_zlabel('Percentage of Games Medals Won')
 plt.show()
 
 
-print(hel)
+
 
 
 

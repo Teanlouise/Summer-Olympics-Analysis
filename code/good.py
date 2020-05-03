@@ -167,6 +167,10 @@ plt.show()
 plot[2] = 0
 
 
+sns.lineplot(x='Year', y='Medal', data=athlete_total_df)
+plt.show()
+
+
 
 
 
@@ -273,7 +277,8 @@ host_medals = games_total_df[['Year', 'Host_NOC', 'Host_Medal_Perc']] #remove se
 host_medals.columns=['Year', 'NOC', 'Host_Medal_Perc'] #remove season, games
 host_difference = pd.merge(host_medals, medals_all, how='left')
 
-
+print(host_difference)
+print(noc_total_df)
 
 
 
@@ -354,10 +359,19 @@ plt.show()
 
 
 #Swarmplots of top 10 for games_medal_perc and games_entries_perc
-#plt.subplot(2,1,1)
+ax = plt.subplot(2,1,1)
 sns.swarmplot(data=top_20_all, x='NOC', y='Games_Entries_Perc', order=top_summer_order, palette=noc_colors)
-# plt.subplot(2,1,2)
-# sns.swarmplot(data=top_20_all, x='NOC', y='Medal_Perc', order=top_summer_order, palette=noc_colors)
+plt.xlabel('The Top 20 Countries')
+plt.ylabel('Percentage of Total Games Entries')
+facet.ax.set_xticklabels(['{}%'.format(x) for x in facet.ax.get_xticks()])
+facet.ax.set_yticklabels(['{}%'.format(x) for x in facet.ax.get_yticks()])
+
+ax = plt.subplot(2,1,2)
+sns.swarmplot(data=top_20_all, x='NOC', y='Medal_Perc', order=top_summer_order, palette=noc_colors)
+plt.xlabel('The Top 20 Countries')
+plt.ylabel('Medals per Entry')
+facet.ax.set_xticklabels(['{}%'.format(x) for x in facet.ax.get_xticks()])
+facet.ax.set_yticklabels(['{}%'.format(x) for x in facet.ax.get_yticks()])
 plt.show()
 
 

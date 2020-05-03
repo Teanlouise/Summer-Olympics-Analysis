@@ -1,22 +1,31 @@
 \babel@toc {english}{}
-\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
-\contentsline {section}{\numberline {2}About the data}{3}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Data Sources}{3}{subsection.2.1}%
-\contentsline {subsubsection}{\numberline {2.1.1}Athlete Information}{3}{subsubsection.2.1.1}%
-\contentsline {subsubsection}{\numberline {2.1.2}Country Information}{4}{subsubsection.2.1.2}%
-\contentsline {subsubsection}{\numberline {2.1.3}Host Cities}{4}{subsubsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.2}Data Parsing}{5}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Combined Dataset}{5}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Totals}{7}{subsubsection.2.2.2}%
-\contentsline {section}{\numberline {3}Discussion}{8}{section.3}%
-\contentsline {subsection}{\numberline {3.1}The Games}{8}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}The Athletes}{9}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}The Athletes}{10}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}The Countries}{10}{subsection.3.4}%
-\contentsline {section}{Appendices}{11}{section*.14}%
-\contentsline {section}{\numberline {A}Important notes about the data}{11}{appendix.A}%
-\contentsline {section}{Appendices}{12}{section*.15}%
-\contentsline {section}{\numberline {A}About the data}{12}{appendix.A}%
-\contentsline {subsection}{\numberline {A.1}Host Cities}{12}{subsection.A.1}%
-\contentsline {subsection}{\numberline {A.2}Combined Data}{13}{subsection.A.2}%
-\contentsline {subsection}{\numberline {A.3}Combined Data}{17}{subsection.A.3}%
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
+\contentsline {section}{\numberline {2}About the data}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Data Sources}{4}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Athlete Information}{4}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Country Information}{5}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Host Cities}{5}{subsubsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.2}Data Parsing}{6}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Combined Dataset}{6}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Totals}{8}{subsubsection.2.2.2}%
+\contentsline {section}{\numberline {3}Discussion}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}The Games}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The Athletes}{10}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Age}{11}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}BMI}{12}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Events}{13}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Medals}{14}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Medal Winners}{15}{subsubsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.3}The Countries}{16}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Medal Distribution}{16}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Participation Behaviour}{16}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Pecentage of Entries}{17}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Hosting}{17}{subsubsection.3.3.4}%
+\contentsline {section}{Appendices}{19}{section*.22}%
+\contentsline {section}{\numberline {A}Important notes about the data}{19}{appendix.A}%
+\contentsline {section}{Appendices}{20}{section*.23}%
+\contentsline {section}{\numberline {A}About the data}{20}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Host Cities}{20}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Combined Data}{21}{subsection.A.2}%
+\contentsline {subsection}{\numberline {A.3}Totals}{26}{subsection.A.3}%
+\contentsline {subsection}{\numberline {A.4}Discussion}{30}{subsection.A.4}%

@@ -271,6 +271,46 @@ INPUT .\images\graph\athlete_age_boxplot.png
 INPUT .\images\graph\athlete_age_boxplot.png
 INPUT .\images\graph\athlete_age_boxplot.png
 INPUT .\images\graph\athlete_age_boxplot.png
+INPUT images\graph\athlete_BMI_violinplot.png
+INPUT .\images\graph\athlete_BMI_violinplot.png
+INPUT .\images\graph\athlete_BMI_violinplot.png
+INPUT .\images\graph\athlete_BMI_violinplot.png
+INPUT .\images\graph\athlete_BMI_violinplot.png
+INPUT images\graph\athlete_event_barplot.png
+INPUT .\images\graph\athlete_event_barplot.png
+INPUT .\images\graph\athlete_event_barplot.png
+INPUT .\images\graph\athlete_event_barplot.png
+INPUT .\images\graph\athlete_event_barplot.png
+INPUT images\graph\athlete_medal_pointplot.png
+INPUT .\images\graph\athlete_medal_pointplot.png
+INPUT .\images\graph\athlete_medal_pointplot.png
+INPUT .\images\graph\athlete_medal_pointplot.png
+INPUT .\images\graph\athlete_medal_pointplot.png
+INPUT images\graph\athlete_difference_qqplot.png
+INPUT .\images\graph\athlete_difference_qqplot.png
+INPUT .\images\graph\athlete_difference_qqplot.png
+INPUT .\images\graph\athlete_difference_qqplot.png
+INPUT .\images\graph\athlete_difference_qqplot.png
+INPUT images\graph\countries_medals_stacked.png
+INPUT .\images\graph\countries_medals_stacked.png
+INPUT .\images\graph\countries_medals_stacked.png
+INPUT .\images\graph\countries_medals_stacked.png
+INPUT .\images\graph\countries_medals_stacked.png
+INPUT images\graph\countries_stats_heatmap.png
+INPUT .\images\graph\countries_stats_heatmap.png
+INPUT .\images\graph\countries_stats_heatmap.png
+INPUT .\images\graph\countries_stats_heatmap.png
+INPUT .\images\graph\countries_stats_heatmap.png
+INPUT images\graph\countries_entryperc_swarm.png
+INPUT .\images\graph\countries_entryperc_swarm.png
+INPUT .\images\graph\countries_entryperc_swarm.png
+INPUT .\images\graph\countries_entryperc_swarm.png
+INPUT .\images\graph\countries_entryperc_swarm.png
+INPUT images\graph\countries_host_lmplot.png
+INPUT .\images\graph\countries_host_lmplot.png
+INPUT .\images\graph\countries_host_lmplot.png
+INPUT .\images\graph\countries_host_lmplot.png
+INPUT .\images\graph\countries_host_lmplot.png
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr17.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.sty
@@ -287,6 +327,11 @@ INPUT f:\TEAN\Portfolio\olympics\code\all_data.py
 INPUT f:\TEAN\Portfolio\olympics\code\totals.py
 INPUT f:\TEAN\Portfolio\olympics\code\totals.py
 INPUT f:\TEAN\Portfolio\olympics\code\totals.py
+INPUT f:\TEAN\Portfolio\olympics\code\analysis.py
+INPUT f:\TEAN\Portfolio\olympics\code\analysis.py
+INPUT f:\TEAN\Portfolio\olympics\code\analysis.py
+INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omlcmr.fd
+INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omlcmr.fd
 INPUT f:\TEAN\Portfolio\olympics\report.aux
 INPUT f:\TEAN\Portfolio\olympics\report.out
 INPUT f:\TEAN\Portfolio\olympics\report.out
@@ -294,6 +339,8 @@ INPUT C:\Users\teanm\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
 INPUT C:\Users\teanm\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
+INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi12.pfb
+INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr12.pfb

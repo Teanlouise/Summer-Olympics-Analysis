@@ -18,16 +18,16 @@ def get_season_df(file_name, season):
 
 # Read in the data for each seasons
 summer_df = get_season_df(
-    'F:/TEAN/Portfolio/olympics/code/host_summer.txt', 'Summer')
+    './code/host_summer.txt', 'Summer')
 winter_df = get_season_df(
-    'F:/TEAN/Portfolio/olympics/code/host_winter.txt', 'Winter')
+    './code/host_winter.txt', 'Winter')
 # Combine to create 1 DF
 host_df = pd.merge(summer_df, winter_df, how='outer')\
     .reset_index(drop = True)
 
 #Check if all cities accounted for:
 athlete_df = pd.read_csv(
-            'F:/TEAN/Portfolio/olympics/data/athlete_events.csv')
+            './data/athlete_events.csv')
 
 for host_city in host_df.City.unique():
     for athlete_city in athlete_df.City.unique():
@@ -37,4 +37,4 @@ for host_city in host_df.City.unique():
             print("Athlete City: ", athlete_city)
 
 # Write to CSV
-host_df.to_csv('F:/TEAN/Portfolio/olympics/data/host_countries.csv')
+host_df.to_csv('./data/host_countries.csv')
