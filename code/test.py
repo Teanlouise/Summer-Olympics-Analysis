@@ -45,33 +45,48 @@ top_summer_order.append('Rest')
 noc_colors = sns.color_palette("Paired", n_colors=11)
 noc_colors[-1] = (0.0, 0.0, 0.0)
 
-print(top_20)
-print(top_20_med)
-print(top_20_med_all)
+
+
+
+top_20_all = top_10.merge(top_20, how='outer')
+
+# from scipy.optimize import curve_fit
+# from pylab import *
+# x = top_20_all['Event']
+# y = top_20_all['Medal']
+
+
+# def func(x, a, b, c, d):
+#     return a*np.exp(-c*(x-b))+d
+
+# popt, pcov = curve_fit(func, x, y, [100,400,0.001,0])
+# print(popt)
+
+# ax = sns.scatterplot(data=top_20_med_all, y='Medal', x='Athletes', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
+# x=np.linspace(0,750,50)
+# #plt.plot(x,func(x,*popt))
+# plt.show()
+
+
+
+
+# print(hel)
+
+
+
+
+
+
+
+
+
+
 
 sns.set()
 
-#Swarmplots of top 10 for games_medal_perc and games_entries_perc
-plt.figure(figsize=[18,5])
-ax = plt.subplot()
-sns.swarmplot(data=top_20_med_all, x='NOC', y='Games_Entries_Perc', order=top_summer_order, palette=noc_colors)
-plt.xlabel('The Top 20 Countries')
-plt.ylabel('Percentage of Total Games Entries')
-ax.set_yticklabels(['{}%'.format(x) for x in ax.get_yticks()])
-plt.xlabel('The Top 20 Countries')
-plt.ylabel('Medals per Entry')
-plt.title('The Percentage of Entries from the top 20 countries')
-legend = top_summer_order[:-1]
-legend.append('Top 11 to 20')
-plt.legend(legend)
-plt.savefig('./images/graph/countries_entryperc_swarm.png')
-plt.show()
 
 
 
-
-
-print(hel)
 
 
 
@@ -186,30 +201,106 @@ non_medal_athlete = athlete_total_df[athlete_total_df['Winner'] == False]
 
 
 
-print(hel)
 
 
 
 #df1 = noc_total_df[(noc_total_df['Year'] != 1984) & (noc_total_df['Year'] != 2012) & (noc_total_df['Year'] != 2004)]
 #print(df1)
+import matplotlib.animation as animation
 print(noc_total_df[noc_total_df['NOC'] == 'CHN'])
-from mpl_toolkits.mplot3d import Axes3D
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+
+
+
+
+
 #df = top_20_all[(top_20_all['NOC'] != 'CHN')]
-df = noc_total_df[(noc_total_df['NOC'] != 'CHN')]
-z =df.Games_Medal_Perc
+#df = noc_total_df[(noc_total_df['NOC'] != 'CHN')]
+df = noc_total_df
+#df = df[(df['GDP'] < 500) & (df['Population'] < 200)]
+
+
+
+
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure(figsize=[18,8])
+ax = fig.add_subplot(121, projection='3d')
+df = noc_total_df
+print(df)
+z =df.Medal
 x =df.Population
 y =df.GDP
-ax.scatter(x, y, z, c='r', marker='o')
+ax.scatter(x, y, z, marker='o', c=z, cmap='coolwarm')
 ax.set_xlabel('Population (millions)')
 ax.set_ylabel('GDP (current US$ billions)')
-ax.set_zlabel('Percentage of Games Medals Won')
+ax.set_zlabel('Number of Medals')
+
+
+ax2 = fig.add_subplot(122, projection='3d')
+df = df[(df['GDP'] < 2500) & (df['Population'] < 200)]
+z =df.Medal
+x =df.Population
+y =df.GDP
+ax2.scatter(x, y, z, marker='o', c=z, cmap='coolwarm')
+ax2.set_xlabel('Population (millions)')
+ax2.set_ylabel('GDP (current US$ billions)')
+ax2.set_zlabel('Number of Medals')
+
+plt.subplots_adjust(top=0.9, left=0.08, right=0.95)
+plt.gcf().suptitle('Relationship between the number of medals won by a country and its population and GDP')
+
+plt.savefig('./images/graph/countries_pop_gdp_3d.png')
 plt.show()
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+# ax.set_xlim([-1, 1])
+# ax.set_ylim([-1,1])
+# ax.set_zlim([-1,1])
+# plot = ax.scatter(x, y, z, color='b', marker= '*',)
+# def func(i):
+#     x_lim = ax.set_xlim(-i,i)
+#     y_lim = ax.set_ylim(-i, i)
+#     z_lim = ax.set_zlim(-i, i)
+#     return plot
+
+# ani = animation.FuncAnimation(fig, func, frames=100, interval=1000, blit=True)
+
+
+plt.show()
+
+
+# fig = plt.figure()
+# ax = fig.add_subplot(111, projection='3d')
+# #df = top_20_all[(top_20_all['NOC'] != 'CHN')]
+# #df = noc_total_df[(noc_total_df['NOC'] != 'CHN')]
+# df = noc_total_df
+# #df = top_20_all
+# z =df.Athletes
+# x =df.Event
+# y =df.Medal
+# ax.scatter(x, y, z, marker='o', cmap=noc_colors)
+# ax.set_xlabel('Event')
+# ax.set_ylabel('Medal')
+# ax.set_zlabel('Athlete')
+# plt.show()
+
+
+
+
+print(hel)
 
 
 

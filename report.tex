@@ -75,7 +75,7 @@
 % Body
 \pagebreak
 \section{Introduction}
-The topic of this project is the Modern Olympics. The games have been a global competition since 1896 with both Summer and Winter sports. The goal is to analyse the patterns of a medal winner depending on their physical characteristics (weight, height, age, sex), home country (athleticism, GDP, population) and the games in which they compete (location). The Olympics are supposed to be a celebration of peace, inclusion and human persistence. It is an opportunity for people to be proud of their country, and be in awe of the feats of athletes. By exploring the above topics it may be possible to determine whether there is a fair representation at the Olympics, and whether the winners are too predictable. If this is the case than the Olympics are no longer serving their purpose.
+The topic of this project is data analysis of the Modern Summer Olympics (1956-2016). Historically, the games have been a global competition since 1896 with both Summer and Winter sports. The goal is to analyse the patterns of medal winner depending on their physical characteristics (weight, height, age, sex) and their home country (participation behaviour, GDP, population). The Olympics are supposed to be a celebration of peace, inclusion and human persistence. It is an opportunity for people to be proud of their country, and be in awe of the feats of athletes. By exploring the above topics it may be possible to determine whether there is a fair representation at the Olympics, and whether the winners are too predictable. If this is the case than the Olympics are no longer serving their purpose.
 
 \section{About the data}
 To explore and understand how the Olympics has changed over time, a variety of data was collected from numerous sources. There are three main sources broken up over five datasets. 
@@ -132,7 +132,7 @@ To explore and understand how the Olympics has changed over time, a variety of d
 
 \subsection{Data Parsing}
     \subsubsection{Combined Dataset}
-    From all of the above files, a new dataset was created using pandas (and article research) to refine the data selection, remove redundancies, combine related variables and update incorrect data to ensure a cleaner dataset for the visualisations. The code can be found in Appendix A.2. These steps were taken to combine the athlete\_events.csv, host\_countries.csv and noc\_regions.csv:
+    From all of the above files, a new dataset was created using the python pandas library (and article research) to refine the data selection, remove redundancies, combine related variables and update incorrect data to ensure a cleaner dataset for the visualisations. The code can be found in Appendix A.2. These steps were taken to combine the athlete\_events.csv, host\_countries.csv and noc\_regions.csv:
         \begin{enumerate}
             \item Remove 'Art Competitions' 
             \item Remove 'Name', 'Team' from athlete\_events.csv
@@ -171,7 +171,7 @@ To explore and understand how the Olympics has changed over time, a variety of d
             \item Add column GDP by matching ‘country’ in gdp.csv
                 \begin{itemize}
                     \item File listed with years as columns
-                    \item 'Melt' the table read in to create row entry for each NOC and year
+                    \item 'melt()' the table to create row entry for each NOC and year
                     \item Convert values to billions (divide by 1,000,000,000)
                 \end{itemize}
             \item Add column POPULATION by matching ‘country’ in population.csv  
@@ -188,14 +188,14 @@ To explore and understand how the Olympics has changed over time, a variety of d
             \caption{games\_total\_draft.csv}               
         \end{figure} 
 
-    At this point, the data was looking at more intensely and some preliminary graphs were tested. After reviewing this information, there were a few additional changes to be made. 
+    At this point, the data was looked at more intensely and some preliminary graphs were tested. After reviewing this information, there were a few additional changes to be made. 
         \begin{enumerate}
             \item Remove Years 1896-1952 from athlete\_events.csv
                 \begin{itemize}
                     \item Women didn't compete in 1896
                     \item Winter Games didn't commence until 1924
                     \item China and USSR joined in 1952
-                    \item The recording of more than 40\% of weight and height started in 1956. Over 90\% since 1960.
+                    \item Since 1960, the recording of weight and height is more than 90\% 
                     \item The GDP and population is not available until 1960
                 \end{itemize}
             \item Remove 'Winter' season, as not only will this overcomplicate the results and comparisons, but also Summer has a lot more data which will skew the outputs.
@@ -242,11 +242,11 @@ To explore and understand how the Olympics has changed over time, a variety of d
                     \item Group the entries by the year, so there is only one entry per games
                     \item Keep column with Host Country Code
                     \item Count the number of entries for that year, store as 'Entries'
-                    \item Count the number of athletes for that year (only one entry per athlete ID) as 'Athletes'
+                    \item Count the number of athletes for that year (one entry per athlete ID) as 'Athletes'
                     \item Count the number of unique events held that year as 'Event'
                     \item Count the number of unique sports hosted that year as 'Sport'
                     \item Count the number of medals awarded that year as 'Medal'
-                    \item Add column 'Host\_Medal' to record the number of medals awarded to the host country
+                    \item Add column 'Host\_Medal' to record number of medals awarded to host country
                     \item Add column 'Visitor\_Medal' to records all medals not awarded to host (total - host)
                     \item Count how many male athletes entered as 'Male'
                     \item Count how many female athletes entered as 'Female'
@@ -263,9 +263,9 @@ To explore and understand how the Olympics has changed over time, a variety of d
             \item \textbf{The Countries} - Finally, this dataset looks at the data from the perspective of the countries participating. There is an entry for each country and each games they compete it. As well as their code and name, this table also includes the GDP and population for the year, whether they were the host that year, as well as the same information as the games, except country specific.
                 \begin{itemize}
                     \item Group the entries by the year and country code
-                    \item Keep column with country code, name, GDP, population and whether they were the host 
+                    \item Keep columns for country code, name, GDP, population and host 
                     \item Count the number of entries for that year, store as 'Entries'
-                    \item Count the number of athletes for that year (only one entry per athlete ID) as 'Athletes'
+                    \item Count the number of athletes for that year (one entry per athlete ID) as 'Athletes'
                     \item Count the number of unique events held that year as 'Event'
                     \item Count the number of unique sports hosted that year as 'Sport'
                     \item Count the number of medals awarded that year as 'Medal'
@@ -290,28 +290,29 @@ To explore and understand how the Olympics has changed over time, a variety of d
 
 
 \section{Discussion}
-The prediction of medal winners will be explored through a number of topics. Due to the difference n data size and added complexity, as explained in the data section, only data from the Summer Olympics since 1956 will be considered. The following questions will be explored and discussed.
+The prediction of medal winners will be explored through a number of topics. Due to the difference in data size and added complexity, as explained in the data section, only data from the Summer Olympics since 1956 will be considered. The following questions will be explored and discussed.
             \begin{itemize}
                 \item How have the games changed?
                 \item What are the characteristics of an Olympic Athlete?
                 \item Is there a difference in physicality between athletes and winners?
                 \item Which countries are the best at the Olympics and how do they differ?
-                \item Is the competition fair?
+                \item Does the competition provide equal opportunity to all countries?
             \end{itemize}
 
 
     \subsection{The Games}
-    There are many factors associated with the Olympic games including the number of entries, athletes (male and female), countries, events, sports and medals. The below histogram provides a sense of the distribution of these factors for all Modern Summer Olympics. A histogram is used to show how many occurrences there are of a single variable and grouping the data into bins (i.e. sets) to give a preliminary idea of the data. Additionally, the data was separated into two subgroups; games before and after 1955
+    There are many factors associated with the Olympic games including the number of entries, athletes (male and female), countries, events, sports and medals. To show how the Olympics has changed over time, in this instance the data set of interest (after 1955) will be compared with the data before 1955. This is the only graph that includes data before 1955. The below histogram provides a sense of the distribution of these factors for all Modern Summer Olympics. A histogram is used to show how many occurrences there are of a single variable and grouping the data into bins (i.e. sets) to give a preliminary idea of the data. Additionally, the data was separated into two subgroups; games before and after 1955.
         \begin{figure} [H]
             \centering
             \includegraphics[width=\textwidth, frame]
                 {./images/graph/games_histogram.png}      
                 \caption{Distribution of variables in Games} 
         \end{figure}
-    By doing so it is evident that the games have changed since the first 60 years of competition. All of the factors are considerably higher after 1955. Notably the number of women prior to 1955 was never higher than 500 competitors, but after this time, at least half of the games has seen more than 3,000 female competitors. Also, the number of countries competing has more than doubled with 6 of the games in the last 60 years seeing approximately 200 countries competing. From this graph it is evident that the Summer Olympic games have significantly diversified and become more accessible to more athletes around the world.
+    %todo - add 'number of occurences to y axis
+    It is evident that the games have changed since the first 60 years of competition. All of the factors are considerably higher after 1955. Notably the number of women prior to 1955 was never higher than 500 competitors, but after this time, at least half of the games has seen more than 3,000 female competitors. Also, the number of countries competing has more than doubled with 6 of the games in the last 60 years seeing approximately 200 countries competing. From this graph it is evident that the Summer Olympic games have significantly diversified and become more accessible to more athletes around the world.
 
     \subsection{The Athletes}
-    Without the athletes there would be no Olympic Games, so naturally the next topic to explore is the characteristics of the Olympiads themselves. Besides their country and their sport of choice, the defining characteristics of an athlete are their Age and BMI. Other interesting factors include how many events they compete in and how many medals on average an athlete wins. All of these graphs use the data of the totals for each athlete from athlete\_total.csv.
+    Without the athletes there would be no Olympic Games, so naturally the next topic to explore is the characteristics of the Olympians themselves. Besides their country and their sport of choice, the defining characteristics of an athlete are their Age and BMI. Other interesting factors include how many events they compete in and how many medals on average an athlete wins. All of these graphs use the data of the totals for each athlete from athlete\_total.csv.
     
         \subsubsection{Age}
         To explore the change in age of athletes the below boxplot shows the central tendency of athlete's age over the last 60 years of games. Additionally, the data are split by an athlete's sex to show the difference between male and female over time. A boxplot shows the spread of data as a compact alternative to a histogram, that highlights the general nature of the data. It identifies the median and interquartile range (25th to 75th) percentile as the box, as well as low and high adjusters with outliers consistently. Due to the high number of athletes, a boxplot was the ultimate choice to display this data as the median and interquartile range are not impacted by outliers allowing a clear view of the general trends of the athletes. 
@@ -357,7 +358,7 @@ The prediction of medal winners will be explored through a number of topics. Due
         Another interesting observation is that male athletes always appear to have more outliers in their age, however the number of outliers for women is increasing.
 
         \subsubsection{BMI}
-        The BMI of an athlete is determined by athlete's height and weight. The equation is weight (kg) multiplied by the height (m) squared. To explore another method of viewed the central tendency distribution of a variable the change in athlete's BMI has been shown with a violin plot. Similar to the boxplot, it shows the median, interquartile range and outliers. The main difference is that instead of clear guidelines for the ranges and specific points representing the outliers, the violin plot represents this data with a kernel density estimation to show very general trends. This makes it perfect options for BMI as the interquartile range is small, compared to the extension of the outliers. The graph is also split between gender to see the difference. 
+        The BMI of an athlete is determined by athlete's height and weight. The equation is weight (kg) multiplied by the height (m) squared. To explore another method of viewing the central tendency distribution of a variable the change in athlete's BMI has been shown with a violin plot. Similar to the boxplot, it shows the median, interquartile range and outliers. The main difference is that instead of clear guidelines for the ranges and specific points representing the outliers, the violin plot represents this data with a kernel density estimation to show very general trends. This makes it perfect options for BMI as the interquartile range is small, compared to the extension of the outliers. The graph is also split between gender to see the difference. 
         \begin{figure} [H]
             \centering
             \includegraphics[width=\textwidth, frame]
@@ -389,7 +390,7 @@ The prediction of medal winners will be explored through a number of topics. Due
                 {./images/graph/athlete_medal_pointplot.png}      
                 \caption{Distribution of Average Number of Medals per Athlete} 
         \end{figure}
-        Again this plot shows a spike for athletes in 1984, 2004 and 2008, which is explained previously. additionally, The higher values in 1956, 1976 and 1980 maybe be explained by boycotts by various nations during these year, decreasing the competition in events and allowing an individual athlete more opportunity to win medals. On average an event will have 8 places, 3 of which will receive a medal. This means if each entry at the Olympics was filled by a different athlete the average number of medals should be 0.375 for completely equal distribution.          
+        Again this plot shows a spike for athletes in 1984, 2004 and 2008, which is explained previously. Ddditionally, the higher values in 1956, 1976 and 1980 maybe be explained by boycotts by various nations during these year, decreasing the competition in events and allowing an individual athlete more opportunity to win medals. On average an event will have 8 places, 3 of which will receive a medal. This means if each entry at the Olympics was filled by a different athlete the average number of medals should be 0.375 for completely equal distribution.          
 
         Males: Taking into consideration the outlying years, the average number of medals has remained around 0.15 per athlete. Also, the error bars are greater than those seen in the average number of events plot, suggesting more variation from the average. Since the average number of events per male athlete is 1.25 and as mentioned the average number of medals for equal distribution is 0.375, this suggests that more athletes are not winning a medal, whilst a smaller group are dominating the medal count.
 
@@ -412,45 +413,8 @@ The prediction of medal winners will be explored through a number of topics. Due
     
     \subsection{The Countries}
 
-
-        \subsubsection{Medal Distribution}
-
-
-        \begin{figure} [H]
-            \centering
-            \includegraphics[width=\textwidth, frame]
-                {./images/graph/countries_medals_stacked.png}      
-                \caption{Breakdown of percentage of medals awarded to each country} 
-        \end{figure}
-
-        \subsubsection{Participation Behaviour}
-
-
-        \begin{figure} [H]
-            \centering
-            \includegraphics[width=\textwidth, frame]
-                {./images/graph/countries_stats_heatmap.png}      
-                \caption{Correlation of participation behaviour attributes of countries } 
-        \end{figure}
-
-
-        \subsubsection{Pecentage of Entries}
-
-
-        \begin{figure} [H]
-            \centering
-            \includegraphics[width=\textwidth, frame]
-                {./images/graph/countries_entryperc_swarm.png}      
-                \caption{Correlation of participation behaviour attributes of countries } 
-        \end{figure}
-
-
-
-
-
-
         \subsubsection{Hosting}
-        Over the last 60 years, there have been 16 Summer Olympics hosted by and 14 nations have hosted, with both United States and Australia hosting twice. The Olympics have been historically very popular with fans around the world travelling or tuning in to watch the action. It is a well known trope that sporting teams do better when they have the home advantage. The below scatterplot explores whether the same can be said about the Summer Olympics. On of the advantages of a scatterplot is being able to compare two variables and view the relationship between them. The average percentage of medals won by each host country during games when they didn't host, are compared against the percentage (average for AUS and USA) won when hosting. Each point represents a year at the Olympic Games. Included on the plot is a 45 degree angle line to show the points at which the two percentages are equal i.e. hosting has no effect on the percentage of medals won. Additionally on the graph is a linear regression model with a 95\% confidence interval using robust to de-weight outliers. 
+        Over the last 60 years, there have been 16 Summer Olympics hosted by and 14 nations have hosted, with both United States and Australia hosting twice. The Olympics have been historically very popular with fans around the world travelling or tuning in to watch the action. It is a well known trope that sporting teams do better when they have the home advantage. The below scatterplot explores whether the same can be said about the Summer Olympics. One of the advantages of a scatterplot is being able to compare two variables and view the relationship between them. The average percentage of medals won by each host country during games when they didn't host, are compared against the percentage (average for AUS and USA) won when hosting. Each point represents a year at the Olympic Games. Included on the plot is a 45 degree angle line to show the points at which the two percentages are equal i.e. hosting has no effect on the percentage of medals won. Additionally on the graph is a linear regression model with a 95\% confidence interval using robust to de-weight outliers. 
 
         \begin{figure} [H]
             \centering
@@ -459,6 +423,86 @@ The prediction of medal winners will be explored through a number of topics. Due
                 \caption{Comparison of percentage of medals won by host countries} 
         \end{figure}
         From the graph it is very clear that hosting does impact the overall percentage of medals won by the host country for that year. There are two instances where the percentage is only slightly less, once from a country whom only generally wins around 1.9\% of medals and another country around 14.5\%. Besides these two cases the performance of countries when hosting is far greater than when visiting. The linear regression model seems to be a good fit up until when the confidence interval becomes greater for countries who win more than 5.5\% medals normally. The outlying values may be explained by boycotts. However it is clear that there is a stronger relationship between hosting and winning more medals than normal. 
+
+        \subsubsection{Participation Behaviour}
+        Besides hosting, there are a number of other attributes that must effect how a country performs at the Olympics. The characteristics effecting how a country competes at the Olympics will next be explored. Due to the high number of characteristics and the interest in how each relate to the number of medals awarded to a country, a heatmap is shown. The heatmap shows the Pearson's correlation coefficient for each pair of variables and colour codes it to match. This creates a simple grid to be able to gain quick insights into what variables may have a correlation.
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=\textwidth, frame]
+                {./images/graph/countries_stats_heatmap.png}      
+                \caption{Correlation of participation behaviour attributes of countries } 
+        \end{figure}
+
+        The strongest correlation to number of medals for a country is the the number of entries (0.87). This intuitively makes sense as the more entries you have the more opportunities there are to win medals. If there is no difference in general physical characteristics than simply filling a position increases chances, and the more athletes from the same country in the same event the higher the chance for that country to win at least one of the three medals. The next highest correlation is the number of athletes, with male and female closely following. These correlations suggests that the representation of both male and females impact the number of medals that will be awarded to a country. 
+        
+        The most surprising observation, in the writers opinion, is that the number of events per athlete seems to have little to no correlation to the number of medals. Originally the hypothesis was that a countries ability to enter 'super athletes' would correlate well with how many medals would be achieved. But as also supported by the bar graph on the average number of events per athlete which only averaged at 1.25 events, countries too seem to have not much difference in diversification of their athletes.
+
+        \subsubsection{Indicators}
+        The next topic to explore is whether barriers exists for countries to fill more entries and hence win more medals. Two of the indicators that may have an impact are the population and GDP of the countries. To demonstrate this multivariate data the below 3D plot shows the relationship of the number of medals, the GDP and population of each of the top 10 countries for each year from 1960. A 3D graphs allows multiple variables to be displayed to show not only the relationship of variables as pairs but also all together. Shading of points is used to show depth.
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=\textwidth, frame]
+                {./images/graph/countries_pop_gdp_3d.png}      
+                \caption{Population and GDP effect on number of medals awarded to a country} 
+        \end{figure}
+
+        Most of the data points lie in a cluster with a population less than 200 million and GDP less than 2500 US\$ billion. Outside of this cluster it appears that the population and GDP have little to do with increased number of medals. Zooming in on this cluster however shows a general trend of increased number of medals associated with higher GDP and population.
+          
+
+
+
+    \subsection{Representation}
+    In this section, the aim is to identify whether there is an equal representation of athletes and equal distribution of medals awarded to the countries that participate at the Olympics. The top 10 countries in terms of total number of medals won since 1956 are USA, Russia, Germany, China, Great Britain, Italy, Japan, France and Hungary in order.
+
+ 
+
+        \subsubsection{Medal Distribution}
+        So there is a strong correlation between the number of entries and the number of medals awarded to a country. It is also clear that the top 10 countries have much higher percentage of entries than other countries. The below stacked bar chart shows how much of the total medals are awarded to the top 10 countries. As mentioned previously a bar chart is in a easy way to represent the count of a variable. In this case, to effectively represent the distribution of 11 groups, a stacked chart clearly shows the distribution and changes of each country.
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=\textwidth, frame]
+                {./images/graph/countries_medals_stacked.png}      
+                \caption{Breakdown of percentage of medals awarded to each country} 
+        \end{figure}
+
+        Rather than representing this chart with total number of medals, a more interesting comparison is to show the percentage of total medals awarded to each country over the years. Using the percentage eliminates outlying years and provides a more consistent representation of the performance of countries. From the chart it is evident that the top 10 countries have consistently dominated the Olympic games, though the domination is easing. The top 10 countries account for at most 70\% in 1956 and at least 52.5\% in 1996 of the total medals awarded. All other 207 nations only account for the remaining percentage of medals. 
+
+        Individually, there are some interesting observations in the top 10 countries. Reminder that during 1980 Games, Russia hosted and there were boycotts from various nations including USA, China and Japan (some athletes from Australia, Great Britain and France), as well as a returned boycott in 1984 where USA hosted and Russia boycotted. China also boycotted the 1956 and 1964 games. The absence on the graph from these countries during this year, prompted further inspection into these years where this knowledge of boycotts was gained.
+        \begin{itemize}
+            \item The percentage of medals awarded to Russia has dropped from over 15\% to just around 5\% (ignoring 1980). Interestingly, during 1980 Russia simply accounted for the USA percentage, with little difference to the other top 10 values.
+            \item The USA have consistently received at least 12.5\% of the Olympics medals each game.
+            \item China is seen entering with more considerable dominance from 1980 increasing to receive 7.5\% of medals (during their year of hosting).
+            \item Great Britain, Japan and Italy have fluctuated without much pattern.
+            \item Hungary has continued to decrease from around 6\% to less than 1\%.
+            \item Germany has seen some drastic changes in their percentage of medals, ranging from 5\% to 20\% and back again. 
+        \end{itemize}   
+
+        \subsubsection{Entries}
+        Due to the strong correlation between the number of entries and the number of medals, the distribution of the number entries from the top 20 countries with the most number of medals since 1956 will be explored. To account for outliers, the percentage of total entries per game by each of the top 10 countries and the average for each year of the top 11 to 20 countries will be plotted in a swarm plot. A swarm plot groups a variable into categories and then plots the spread of the data with each dot representing a dot point. Rather than overlapping points that are the same, the points fan out next to each other. 
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=\textwidth, frame]
+                {./images/graph/countries_entryperc_swarm.png}      
+                \caption{Distribution of entries from countries} 
+        \end{figure}
+
+        This graph shows that except for Hungary the percentage of entries from each of the top 10 countries each year is always higher than the average of the top 11 to 20 nations. Besides boycott years, the USA always accounts for at least 5\% of entries, Germany at least 4\% and the remaining except for Hungary account for at least 3\% each. This means that just looking at their minimum contributions, the top 10 nations always account for at least 35\% of the entries at the Olympics. On average the next 10 nations range from 1 to 3\% of the entries. Adding and average of 2\% from these nations, results in the top 20 nations filling at least 55\% of the positions at the Olympics. The 2016 Summer Olympics saw 207 nations competing and 13,688 entries. Therefore, whilst 20 nations enter approximately 7,500 of the available positions, the remaining 187 nations enter only 6,100 positions.
+
+        \subsubsection{Participation}
+
+        \begin{figure} [H]
+            \centering
+            \includegraphics[width=\textwidth, frame]
+                {./images/graph/countries_medals_resid.png}      
+                \caption{Distribution of entries from countries} 
+        \end{figure}
+        
+        
+
+        
 
 
 

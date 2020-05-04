@@ -18,6 +18,9 @@ host_difference = pd.read_csv(
 
 
 sns.set()
+figsize = [12,8]
+year_fig = [16,8]
+title_dict = {'fontsize': 14, 'fontweight': 'bold'}
 
 ########## THE GAMES #############
 games_var_list = ['Entries', 
@@ -35,7 +38,7 @@ games_total_before = games_total_before[
                         & (games_total_before['Year']<1955)]
 
 plt.figure(figsize=[12,8])
-plt.gcf().suptitle('Distribution of Games Attributes for all Summer Olympics')     
+plt.gcf().suptitle('Distribution of Games Attributes for all Summer Olympics', fontdict=title_dict)     
 plot = [2,4,0] 
 dfs = [games_total_before, 'Before 1955'], [games_total_df, 'After 1955']
 for var in games_var_list:
@@ -51,15 +54,14 @@ plt.show()
 
 
 ########## THE ATHLETES #############
-year_fig = [16,8]
 
 # Boxplot - athlete age
 plt.figure(figsize=year_fig)
 ax = plt.subplot()
 sns.boxplot(x='Year' , y='Age', data=athlete_total_df, hue='Sex')
-plt.title('The Age of Summer Athletes since 1956 by Gender')
+plt.title('The Age of Summer Athletes since 1956 by Gender', fontdict=title_dict, pad=15)
 ax.set_yticks(range(10,76,5))
-plt.subplots_adjust(top=0.9, left=0.08)
+plt.subplots_adjust(top=0.9, left=0.08, right=0.95)
 plt.savefig('./images/graph/athlete_age_boxplot.png')
 plt.show()
 
@@ -67,9 +69,9 @@ plt.show()
 plt.figure(figsize=year_fig)
 ax = plt.subplot()
 sns.violinplot(x='Year', y='BMI', data=athlete_total_df, hue='Sex', split=True, inner='quartile')
-plt.title('The BMI of Summer Athletes since 1956 by Gender')
+plt.title('The BMI of Summer Athletes since 1956 by Gender', fontdict=title_dict, pad=15)
 ax.set_yticks(range(5,68, 5))
-plt.subplots_adjust(top=0.9, left=0.08)
+plt.subplots_adjust(top=0.9, left=0.08, right=0.95)
 plt.savefig('./images/graph/athlete_bmi_violinplot.png')
 plt.show()
 
@@ -78,10 +80,10 @@ plt.figure(figsize=year_fig)
 ax = plt.subplot()
 sns.barplot(x='Year', y='Event', data=athlete_total_df, hue='Sex')
 ax.set_yticks(np.arange(1,4.1,0.25))
-plt.title('The average number of events per athlete since 1956 by gender')
+plt.title('The average number of events per athlete since 1956 by gender', fontdict=title_dict, pad=15)
 plt.ylabel('Number of events')
-plt.subplots_adjust(top=0.9, left=0.08)
-plt.savefig('./images/graph/athlete_event_barplot.png')
+plt.subplots_adjust(top=0.9, left=0.08, right=0.95)
+plt.savefig('./images/graph/athlete_event_barplot.png', fontdict=title_dict, pad=15)
 plt.show()
 
 # Number of medals per athlete
@@ -89,9 +91,9 @@ plt.figure(figsize=year_fig)
 ax = plt.subplot()
 sns.pointplot(x='Year', y='Medal', data=athlete_total_df, hue='Sex')
 ax.set_yticks(np.arange(0.1, 0.71, 0.05))
-plt.title('The average number of medals per athlete since 1956 by gender')
+plt.title('The average number of medals per athlete since 1956 by gender', fontdict=title_dict, pad=15)
 plt.ylabel('Number of medals')
-plt.subplots_adjust(top=0.9, left=0.08)
+plt.subplots_adjust(top=0.9, left=0.08, right=0.95)
 plt.savefig('./images/graph/athlete_medal_pointplot.png')
 plt.show()
 
@@ -100,7 +102,7 @@ athlete_var_list = [['Age', [10, 45], '(years)'], ['BMI', [15,35], '']]
 medal_athlete = athlete_total_df[athlete_total_df['Winner']]
 non_medal_athlete = athlete_total_df[athlete_total_df['Winner'] == False]
 
-plt.figure(figsize=[16,8])
+plt.figure(figsize=year_fig)
 plot = [1, 2, 0]
 for var in athlete_var_list:
     plot[2] += 1
@@ -122,8 +124,8 @@ for var in athlete_var_list:
     ax.set_ylim(bottom=var[1][0], top=var[1][1])
     plt.legend(['Medal Winner = Non Medal Winner','Percentiles', 'Median', 'Interquartile Range'])
 
-plt.subplots_adjust(top=0.9, left=0.08)
-plt.gcf().suptitle('Comparison of Physical Characteristics of Medal Winners and Athletes')
+plt.subplots_adjust(top=0.9, left=0.08, right=0.95)
+plt.gcf().suptitle('Comparison of Physical Characteristics of Medal Winners and Athletes', fontdict=title_dict)
 plt.savefig('./images/graph/athlete_difference_qqplot.png')
 plt.show()
 
@@ -163,26 +165,42 @@ facet.ax.set_yticklabels(['{}%'.format(x) for x in facet.ax.get_yticks()])
 plt.text(6,5, 'Visitor Medal Percentage = Host Medal Percentage', color='C1', rotation=10)
 facet.ax.set_xlim(left=0)
 facet.ax.set_ylim(bottom=0)
-plt.subplots_adjust(top=0.9, left=0.08)
+plt.subplots_adjust(top=0.9, left=0.08, right=0.95)
 plt.xlabel('Average Percentage of Games Medals as Visitor')
 plt.ylabel('Average Percentage of Games Medals as Host')
-plt.title('Comparison of the average percentage of games medals won by countries who have hosted')
+plt.title('Comparison of the average percentage of games medals won by countries who have hosted', fontdict=title_dict, pad=15)
 plt.savefig('./images/graph/countries_host_lmplot.png') # , bbox_inches='tight'
 plt.show()
 
 # Heatmap of stats for all countries
 plt.figure(figsize=[18,12])
-noc_labels = ['# Medals',  '%\ Games Medals', '%\ Games Entries', '# Entries', '# Events', '# Athletes', '# Male', '# Female', 'Medals/Event', 'Events/Athlete']
-corr = noc_total_df[['Medal', 'Games_Medal_Perc', 'Games_Entries_Perc', 'Entries', 'Event', 'Athletes', 'Male', 'Female', 'Medal_Perc', 'Unique_Perc']].corr()
+noc_labels = ['# Medals',  '# Entries', '# Events', '# Athletes', '# Male', '# Female', 'Medals/Event', 'Events/Athlete']
+corr = noc_total_df[['Medal', 'Entries', 'Event', 'Athletes', 'Male', 'Female', 'Medal_Perc', 'Unique_Perc']].corr()
 sns.heatmap(corr, annot=True, xticklabels=noc_labels, yticklabels=noc_labels, linewidths=0.5, cmap='coolwarm')
-plt.title("Correlation of Partcipation Behaviour of All Countries Competing")
+plt.title("Correlation of Partcipation Behaviour of All Countries Competing", fontdict=title_dict, pad=15)
 plt.yticks(rotation = 0)
 plt.xticks(rotation = 0)
+plt.subplots_adjust(top=0.9, left=0.08, right=1.05)
 plt.savefig('./images/graph/countries_stats_heatmap.png')
 plt.show()
 
-
-
+#Swarmplots of top 10 for games_medal_perc and games_entries_perc
+plt.figure(figsize=year_fig)
+ax = plt.subplot()
+sns.swarmplot(data=top_20_med_all, x='NOC', y='Games_Entries_Perc', order=top_summer_order, palette=noc_colors)
+plt.xlabel('The Top 20 Countries')
+plt.ylabel('Percentage of Total Games Entries')
+ax.set_yticks(range(1,11))
+ax.set_yticklabels(['{}%'.format(x) for x in ax.get_yticks()])
+plt.xlabel('The Top 20 Countries')
+plt.ylabel('Percentage of total entries')
+plt.title('The Percentage of Entries from the top 20 countries', fontdict=title_dict, pad=15)
+legend = top_summer_order[:-1]
+legend.append('Top 11 to 20')
+plt.legend(legend)
+plt.subplots_adjust(top=0.9, left=0.08, right=0.95)
+plt.savefig('./images/graph/countries_entryperc_swarm.png')
+plt.show()
 
 
 # Stacked bar chart of Medal Percentage of NOC
@@ -207,23 +225,89 @@ plt.xlabel('Years')
 plt.ylabel('Percentage of Total Games Medals')
 ax.set_yticklabels(['{}%'.format(x) for x in ax.get_yticks()])
 plt.legend()
-plt.title('The Percentage of Medals awarded to each country')
+plt.subplots_adjust(top=0.9, left=0.08, right=0.95)
+plt.title('The Percentage of Medals awarded to each country', fontdict=title_dict, pad=15)
 plt.savefig('./images/graph/countries_medals_stacked.png')
 plt.show()
 
 
-#Swarmplots of top 10 for games_medal_perc and games_entries_perc
-plt.figure(figsize=[18,5])
-ax = plt.subplot()
-sns.swarmplot(data=top_20_med_all, x='NOC', y='Games_Entries_Perc', order=top_summer_order, palette=noc_colors)
-plt.xlabel('The Top 20 Countries')
-plt.ylabel('Percentage of Total Games Entries')
+
+
+# Scatterplots of top 20 medals against athlete, event and entries
+top_20_all = top_10.merge(top_20, how='outer')
+df = top_20_all[top_20_all['Year'] != 1980]
+y = 'Games_Medal_Perc'
+plt.figure(figsize=(16,10))
+sns.set_style("whitegrid")
+plt.subplot(2,2,1)
+ax = sns.scatterplot(data=df, y=y, x='Athletes', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
+ax = sns.regplot(data=df, y=y, x='Athletes', order=2, scatter=False, color='C7')
+ax.legend_.remove()
+ax.set_yticks(np.arange(0,26,2.5))
+ax.set_xticks(range(0,801,100))
+ax.set_xticklabels([0, '', 100, '', 200, '', 300, '', 400, '', 500, '', 600,'', 700, '', 800])
+ax.set_xlim(left=0)
+ax.set_ylim(bottom=0)
 ax.set_yticklabels(['{}%'.format(x) for x in ax.get_yticks()])
-plt.xlabel('The Top 20 Countries')
-plt.ylabel('Medals per Entry')
-plt.title('The Percentage of Entries from the top 20 countries')
-legend = top_summer_order[:-1]
-legend.append('Top 11 to 20')
-plt.legend(legend)
-plt.savefig('./images/graph/countries_entryperc_swarm.png')
+ax.set_ylabel('Percentage of Total Medals') 
+ax.set_xlabel('Number of Athletes') 
+
+plt.subplot(2,2,2)
+ax2 = sns.scatterplot(data=df, y=y, x='Event', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
+ax2.legend_.remove()
+ax2 = sns.regplot(data=df, y=y, x='Event', scatter=False, color='C7', order=3)
+ax2.set_ylabel('') 
+ax2.set_yticks(np.arange(0,26,2.5))
+ax2.set_yticklabels(['{}%'.format(x) for x in ax2.get_yticks()])
+ax2.set_xticks(range(0,301,50))
+ax2.set_xticklabels(range(0,301,50))
+ax2.set_xlim(left=0)
+ax2.set_ylim(bottom=0)
+ax2.set_xlabel('Number of Events') 
+
+ax3 = plt.subplot(2,2,3)
+sns.residplot('Athletes', y, data=df, order=2)
+ax3.set_ylabel('Percentage of Total Medals') 
+ax3.set_xlabel('Number of Athletes') 
+ax4 = plt.subplot(2,2,4)
+sns.residplot('Event', y, data=df, order=3)
+ax4.set_ylabel('Percentage of Total Medals') 
+ax4.set_xlabel('Number of Events') 
+ax4.set_ylabel('') 
+plt.subplots_adjust(top=0.9, left=0.08, right=0.95)
+plt.gcf().suptitle('Relationship between the percentage of Total Medals, and the Number of Events and Athletes', fontdict=title_dict)
+plt.savefig('./images/graph/countries_medals_resid.png')
 plt.show()
+
+
+# 3D plot of population and GDP
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure(figsize=[18,8])
+ax = fig.add_subplot(121, projection='3d')
+df = noc_total_df
+z =df.Medal
+x =df.Population
+y =df.GDP
+ax.scatter(x, y, z, marker='o', c=z, cmap='coolwarm')
+ax.set_xlabel('Population (millions)')
+ax.set_ylabel('GDP (current US$ billions)')
+ax.set_zlabel('Number of Medals')
+plt.title('All countries since 1956')
+
+ax2 = fig.add_subplot(122, projection='3d')
+df = df[(df['GDP'] < 2500) & (df['Population'] < 200)]
+z =df.Medal
+x =df.Population
+y =df.GDP
+ax2.scatter(x, y, z, marker='o', c=z, cmap='coolwarm')
+ax2.set_xlabel('Population (millions)')
+ax2.set_ylabel('GDP (current US$ billions)')
+ax2.set_zlabel('Number of Medals')
+
+plt.subplots_adjust(top=0.9, left=0.08, right=0.95)
+plt.gcf().suptitle('Relationship between the number of medals won by a country and its population and GDP', fontdict=title_dict)
+plt.savefig('./images/graph/countries_pop_gdp_3d.png')
+plt.show()
+
+
+

@@ -11,21 +11,24 @@
 \contentsline {section}{\numberline {3}Discussion}{9}{section.3}%
 \contentsline {subsection}{\numberline {3.1}The Games}{9}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}The Athletes}{10}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Age}{11}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.1}Age}{10}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}BMI}{12}{subsubsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.3}Events}{13}{subsubsection.3.2.3}%
-\contentsline {subsubsection}{\numberline {3.2.4}Medals}{14}{subsubsection.3.2.4}%
-\contentsline {subsubsection}{\numberline {3.2.5}Medal Winners}{15}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.4}Medals}{13}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Medal Winners}{14}{subsubsection.3.2.5}%
 \contentsline {subsection}{\numberline {3.3}The Countries}{16}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}Medal Distribution}{16}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.1}Hosting}{16}{subsubsection.3.3.1}%
 \contentsline {subsubsection}{\numberline {3.3.2}Participation Behaviour}{16}{subsubsection.3.3.2}%
-\contentsline {subsubsection}{\numberline {3.3.3}Pecentage of Entries}{17}{subsubsection.3.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.4}Hosting}{17}{subsubsection.3.3.4}%
-\contentsline {section}{Appendices}{19}{section*.22}%
-\contentsline {section}{\numberline {A}Important notes about the data}{19}{appendix.A}%
-\contentsline {section}{Appendices}{20}{section*.23}%
-\contentsline {section}{\numberline {A}About the data}{20}{appendix.A}%
-\contentsline {subsection}{\numberline {A.1}Host Cities}{20}{subsection.A.1}%
-\contentsline {subsection}{\numberline {A.2}Combined Data}{21}{subsection.A.2}%
-\contentsline {subsection}{\numberline {A.3}Totals}{26}{subsection.A.3}%
-\contentsline {subsection}{\numberline {A.4}Discussion}{30}{subsection.A.4}%
+\contentsline {subsubsection}{\numberline {3.3.3}Indicators}{17}{subsubsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.4}Representation}{18}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Medal Distribution}{18}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Entries}{19}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Participation}{21}{subsubsection.3.4.3}%
+\contentsline {section}{Appendices}{22}{section*.24}%
+\contentsline {section}{\numberline {A}Important notes about the data}{22}{appendix.A}%
+\contentsline {section}{Appendices}{23}{section*.25}%
+\contentsline {section}{\numberline {A}About the data}{23}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Host Cities}{23}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Combined Data}{24}{subsection.A.2}%
+\contentsline {subsection}{\numberline {A.3}Totals}{29}{subsection.A.3}%
+\contentsline {subsection}{\numberline {A.4}Discussion}{33}{subsection.A.4}%
