@@ -192,7 +192,7 @@ games_total_df['Perc_BMI'] = round(games_total_df.Num_BMI
                                 / games_total_df.Entries, 2)
 
 # Write to file before further changes for pre 1956 data
-games_total_df.to_csv('./data/games_total_draft.csv')
+games_total_df.to_csv('./data/games_total_before.csv')
 
 
 ######### UPDATE DATA FOR SUMMER ONLY FROM 1956 ##########

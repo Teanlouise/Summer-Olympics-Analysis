@@ -306,16 +306,16 @@ INPUT .\images\graph\countries_pop_gdp_3d.png
 INPUT .\images\graph\countries_pop_gdp_3d.png
 INPUT .\images\graph\countries_pop_gdp_3d.png
 INPUT .\images\graph\countries_pop_gdp_3d.png
-INPUT images\graph\countries_medals_stacked.png
-INPUT .\images\graph\countries_medals_stacked.png
-INPUT .\images\graph\countries_medals_stacked.png
-INPUT .\images\graph\countries_medals_stacked.png
-INPUT .\images\graph\countries_medals_stacked.png
 INPUT images\graph\countries_entryperc_swarm.png
 INPUT .\images\graph\countries_entryperc_swarm.png
 INPUT .\images\graph\countries_entryperc_swarm.png
 INPUT .\images\graph\countries_entryperc_swarm.png
 INPUT .\images\graph\countries_entryperc_swarm.png
+INPUT images\graph\countries_medals_stacked.png
+INPUT .\images\graph\countries_medals_stacked.png
+INPUT .\images\graph\countries_medals_stacked.png
+INPUT .\images\graph\countries_medals_stacked.png
+INPUT .\images\graph\countries_medals_stacked.png
 INPUT images\graph\countries_medals_resid.png
 INPUT .\images\graph\countries_medals_resid.png
 INPUT .\images\graph\countries_medals_resid.png
@@ -337,11 +337,20 @@ INPUT f:\TEAN\Portfolio\olympics\code\all_data.py
 INPUT f:\TEAN\Portfolio\olympics\code\totals.py
 INPUT f:\TEAN\Portfolio\olympics\code\totals.py
 INPUT f:\TEAN\Portfolio\olympics\code\totals.py
-INPUT f:\TEAN\Portfolio\olympics\code\analysis.py
-INPUT f:\TEAN\Portfolio\olympics\code\analysis.py
-INPUT f:\TEAN\Portfolio\olympics\code\analysis.py
+INPUT f:\TEAN\Portfolio\olympics\code\games.py
+INPUT f:\TEAN\Portfolio\olympics\code\games.py
+INPUT f:\TEAN\Portfolio\olympics\code\games.py
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omlcmr.fd
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omlcmr.fd
+INPUT f:\TEAN\Portfolio\olympics\code\athletes.py
+INPUT f:\TEAN\Portfolio\olympics\code\athletes.py
+INPUT f:\TEAN\Portfolio\olympics\code\athletes.py
+INPUT f:\TEAN\Portfolio\olympics\code\countries.py
+INPUT f:\TEAN\Portfolio\olympics\code\countries.py
+INPUT f:\TEAN\Portfolio\olympics\code\countries.py
+INPUT f:\TEAN\Portfolio\olympics\code\representation.py
+INPUT f:\TEAN\Portfolio\olympics\code\representation.py
+INPUT f:\TEAN\Portfolio\olympics\code\representation.py
 INPUT f:\TEAN\Portfolio\olympics\report.aux
 INPUT f:\TEAN\Portfolio\olympics\report.out
 INPUT f:\TEAN\Portfolio\olympics\report.out

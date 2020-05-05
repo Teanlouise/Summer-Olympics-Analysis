@@ -458,3 +458,79 @@ plt.show()
 
 # sns.pairplot(top_20_all, kind='scatter', vars=['Athletes', 'Entries', 'Event', 'Medal'], plot_kws={'color':'C7'}, diag_kws={'color':'C7'})
 # plt.show()
+
+
+
+
+
+
+
+
+
+
+
+# Scatterplots - Top 20 medals against athlete and events
+order = top_summer_order[:-1]
+order.append('11-20')
+print(order)
+top_20_all = top_10.merge(top_20, how='outer')
+df = top_20_all[top_20_all['Year'] != 1980]
+y = 'Games_Medal_Perc'
+plt.figure(figsize=(18,12))
+
+plt.subplot(2,2,1)
+ax = sns.scatterplot(data=df, y=y, x='Athletes', hue='NOC', hue_order=order, palette=noc_colors)
+ax = sns.regplot(data=df, y=y, x='Athletes', order=2, scatter=False, color='C7')
+#ax.legend_.remove()
+ax.set_yticks(np.arange(0,26,2.5))
+ax.set_xticks(range(0,801,100))
+ax.set_xticklabels([0, '', 100, '', 200, '', 300, '', 400, '', 500, '', 600,'', 700, '', 800])
+ax.set_xlim(left=0)
+ax.set_ylim(bottom=0)
+ax.set_xlabel('Number of Athletes') 
+ax.set_yticklabels(['{}%'.format(x) for x in ax.get_yticks()])
+plt.setp(ax.get_legend().get_texts(), fontsize='8')
+x1 = noc_total_df['Athletes']
+y1 = noc_total_df['Medal']
+quad = np.polyfit(x1,y1,2)
+v1 = np.polyval(quad, x1)
+_,_,least,p,_ = stats.linregress(v1,y1)
+ax.annotate("r = {:.2f}".format(least), xy=(.8, .6), xycoords=ax.transAxes, rotation=30, color='C7')
+ax.set_ylabel('Percentage of Total Medals') 
+plt.title('Percentage of Medals and Number of Athletes', fontdict=title_dict)
+
+plt.subplot(2,2,2)
+ax2 = sns.scatterplot(data=df, y=y, x='Event', hue='NOC', hue_order=order, palette=noc_colors)
+#ax2.legend_.remove()
+ax2 = sns.regplot(data=df, y=y, x='Event', scatter=False, color='C7', order=3)
+ax2.set_ylabel('Percentage of Total Medals') 
+ax2.set_yticks(np.arange(0,26,2.5))
+ax2.set_yticklabels(['{}%'.format(x) for x in ax2.get_yticks()])
+ax2.set_xticks(range(0,301,50))
+ax2.set_xticklabels(range(0,301,50))
+ax2.set_xlim(left=0)
+ax2.set_ylim(bottom=0)
+ax2.set_xlabel('Number of Events') 
+x2 = noc_total_df['Medal']
+y2 = noc_total_df['Event']
+quad = np.polyfit(x2,y2,2)
+v2 = np.polyval(quad, x2)
+_,_,least2,p,_ = stats.linregress(v2,y2)
+ax2.annotate("r = {:.2f}".format(least2), xy=(.68, .32), xycoords=ax2.transAxes, rotation=30, color='C7')
+plt.title('Percentage of Medals and Number of Events', fontdict=title_dict)
+
+ax3 = plt.subplot(2,2,3)
+sns.residplot('Athletes', y, data=df, order=2, color='C7')
+ax3.set_ylabel('Percentage of Total Medals') 
+ax3.set_xlabel('Number of Athletes') 
+ax3.set_yticklabels(['{}%'.format(x) for x in ax3.get_yticks()])
+plt.title('Residuals of Quadratic Fit', fontdict=title_dict)
+
+ax4 = plt.subplot(2,2,4)
+sns.residplot('Event', y, data=df, order=2, color='C7')
+ax4.set_ylabel('Percentage of Total Medals') 
+ax4.set_xlabel('Number of Events') 
+ax4.set_yticklabels(['{}%'.format(x) for x in ax4.get_yticks()])
+plt.title('Residuals of Quadratic Fit', fontdict=title_dict)
+plt.subplots_adjust(top=0.9, left=0.08, right=0.95, hspace=0.3)
+plt.gcf().suptitle('Relationship between the percentage of Total Medals, and the Number of Events and Athletes', fontsize=18)

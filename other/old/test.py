@@ -5,6 +5,8 @@ import statsmodels.api as sm
 import numpy as np
 from plots import *
 from statsmodels.graphics.gofplots import qqplot_2samples
+import scipy.stats as stats
+import scipy.optimize as opt
 
 athlete_colors ={'Winter': 'C0', 'Summer':'C1', 'F': 'C6', 'M': 'C9', False: 'C4', True: 'C2'}
 
@@ -221,50 +223,6 @@ df = noc_total_df
 
 
 
-from mpl_toolkits.mplot3d import Axes3D
-fig = plt.figure(figsize=[18,8])
-ax = fig.add_subplot(121, projection='3d')
-df = noc_total_df
-print(df)
-z =df.Medal
-x =df.Population
-y =df.GDP
-ax.scatter(x, y, z, marker='o', c=z, cmap='coolwarm')
-ax.set_xlabel('Population (millions)')
-ax.set_ylabel('GDP (current US$ billions)')
-ax.set_zlabel('Number of Medals')
-
-
-ax2 = fig.add_subplot(122, projection='3d')
-df = df[(df['GDP'] < 2500) & (df['Population'] < 200)]
-z =df.Medal
-x =df.Population
-y =df.GDP
-ax2.scatter(x, y, z, marker='o', c=z, cmap='coolwarm')
-ax2.set_xlabel('Population (millions)')
-ax2.set_ylabel('GDP (current US$ billions)')
-ax2.set_zlabel('Number of Medals')
-
-plt.subplots_adjust(top=0.9, left=0.08, right=0.95)
-plt.gcf().suptitle('Relationship between the number of medals won by a country and its population and GDP')
-
-plt.savefig('./images/graph/countries_pop_gdp_3d.png')
-plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # ax.set_xlim([-1, 1])
 # ax.set_ylim([-1,1])
@@ -279,7 +237,6 @@ plt.show()
 # ani = animation.FuncAnimation(fig, func, frames=100, interval=1000, blit=True)
 
 
-plt.show()
 
 
 # fig = plt.figure()
@@ -298,11 +255,108 @@ plt.show()
 # plt.show()
 
 
+quad = np.polyfit(noc_total_df['Event'],noc_total_df['Medal'],3)
+v1 = np.polyval(quad, noc_total_df['Event'])
+_,_,least,p,_ = stats.linregress(v1,noc_total_df['Medal'])
+
+
+not_top_10 = noc_total_df[noc_total_df['Top_10'] == False]
+not_top_10['NOC'] = 'Rest'
+print(not_top_10)
+#covariance = np.cov(x,y)
+x = noc_total_df['Event']
+y = noc_total_df['Medal']
+pearson, _ = stats.pearsonr(x,y)
+print('Pearson: ', pearson)
+spearman,_ = stats.spearmanr(x,y)
+print('Spearman: ', spearman)
+_,_,least,p,_ = stats.linregress(x,y)
+print('Least:', least, p)
+
+
+print('FIT')
+
+x = noc_total_df['Event']
+y = noc_total_df['Medal']
+quad = np.polyfit(x,y,4)
+x1 = np.polyval(quad, x)
+_,_,least,p,_ = stats.linregress(x1,y)
+print('Least:', least)
+
+df = noc_total_df[noc_total_df['Event'] < 150]
+x2 = df['Medal']
+y2 = df['Event']
+quad = np.polyfit(x2,y2,3)
+v2 = np.polyval(quad, x2)
+_,_,least2,p,_ = stats.linregress(v2,y2)
+print('Least:', least2)
+
+print(h)
+
+
+
+
+top_summer_order = top_10.groupby(['NOC'], as_index=False)['Medal'].sum().sort_values(by='Medal', ascending=False).NOC.tolist()
+top_summer_order.append('Rest')
+
+
+# Scatterplots - Top 20 medals against athlete and events
+top_20_all = top_10.merge(top_20, how='outer')
+df = top_20_all[top_20_all['Year'] != 1980]
+y = 'Games_Medal_Perc'
+plt.figure(figsize=(16,10))
+
+plt.subplot(2,2,1)
+ax = sns.scatterplot(data=df, y=y, x='Athletes', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
+ax = sns.regplot(data=df, y=y, x='Athletes', order=2, scatter=False, color='C7')
+ax.legend_.remove()
+ax.set_yticks(np.arange(0,26,2.5))
+ax.set_xticks(range(0,801,100))
+ax.set_xticklabels([0, '', 100, '', 200, '', 300, '', 400, '', 500, '', 600,'', 700, '', 800])
+ax.set_xlim(left=0)
+ax.set_ylim(bottom=0)
+ax.set_yticklabels(['{}%'.format(x) for x in ax.get_yticks()])
+ax.set_ylabel('Percentage of Total Medals') 
+ax.set_xlabel('Number of Athletes') 
+
+plt.subplot(2,2,2)
+ax2 = sns.scatterplot(data=df, y=y, x='Event', hue='NOC', hue_order=top_summer_order, palette=noc_colors)
+ax2.legend_.remove()
+ax2 = sns.regplot(data=df, y=y, x='Event', scatter=False, color='C7', order=3)
+ax2.set_ylabel('') 
+ax2.set_yticks(np.arange(0,26,2.5))
+ax2.set_yticklabels(['{}%'.format(x) for x in ax2.get_yticks()])
+ax2.set_xticks(range(0,301,50))
+ax2.set_xticklabels(range(0,301,50))
+ax2.set_xlim(left=0)
+ax2.set_ylim(bottom=0)
+ax2.set_xlabel('Number of Events') 
+
+ax3 = plt.subplot(2,2,3)
+sns.residplot('Athletes', y, data=df, order=2)
+ax3.set_ylabel('Percentage of Total Medals') 
+ax3.set_xlabel('Number of Athletes') 
+ax4 = plt.subplot(2,2,4)
+sns.residplot('Event', y, data=df, order=3)
+ax4.set_ylabel('Percentage of Total Medals') 
+ax4.set_xlabel('Number of Events') 
+ax4.set_ylabel('') 
+plt.subplots_adjust(top=0.9, left=0.08, right=0.95)
+plt.gcf().suptitle('Relationship between the percentage of Total Medals, and the Number of Events and Athletes')
+plt.savefig('./images/graph/countries_medals_resid.png')
+plt.show()
+
+
+
+# Spearman - A linear relationship between the variables is not assumed, although a monotonic relationship is assumed. This is a mathematical name for an increasing or decreasing relationship between the two variables.
+
+
+
+
+
 
 
 print(hel)
-
-
 
 mean = np.zeros(3)
 cov = np.random.uniform(.2, .4, (3, 3))
@@ -322,6 +376,7 @@ g.map_upper(plt.scatter, s=10)
 g.map_diag(sns.distplot, kde=False)
 g.map_lower(sns.kdeplot, cmap="Blues_d")
 g.map_lower(corrfunc)
+
 
 
 

@@ -18,9 +18,9 @@ def get_season_df(file_name, season):
 
 # Read in the data for each seasons
 summer_df = get_season_df(
-    './code/host_summer.txt', 'Summer')
+    './data/host_summer.txt', 'Summer')
 winter_df = get_season_df(
-    './code/host_winter.txt', 'Winter')
+    './data/host_winter.txt', 'Winter')
 # Combine to create 1 DF
 host_df = pd.merge(summer_df, winter_df, how='outer')\
     .reset_index(drop = True)

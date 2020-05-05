@@ -1,11 +1,11 @@
 \babel@toc {english}{}
 \contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
-\contentsline {section}{\numberline {2}About the data}{4}{section.2}%
+\contentsline {section}{\numberline {2}The Data}{4}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Data Sources}{4}{subsection.2.1}%
 \contentsline {subsubsection}{\numberline {2.1.1}Athlete Information}{4}{subsubsection.2.1.1}%
 \contentsline {subsubsection}{\numberline {2.1.2}Country Information}{5}{subsubsection.2.1.2}%
 \contentsline {subsubsection}{\numberline {2.1.3}Host Cities}{5}{subsubsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.2}Data Parsing}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.2}Data Processing}{6}{subsection.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.1}Combined Dataset}{6}{subsubsection.2.2.1}%
 \contentsline {subsubsection}{\numberline {2.2.2}Totals}{8}{subsubsection.2.2.2}%
 \contentsline {section}{\numberline {3}Discussion}{9}{section.3}%
@@ -18,17 +18,27 @@
 \contentsline {subsubsection}{\numberline {3.2.5}Medal Winners}{14}{subsubsection.3.2.5}%
 \contentsline {subsection}{\numberline {3.3}The Countries}{16}{subsection.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Hosting}{16}{subsubsection.3.3.1}%
-\contentsline {subsubsection}{\numberline {3.3.2}Participation Behaviour}{16}{subsubsection.3.3.2}%
-\contentsline {subsubsection}{\numberline {3.3.3}Indicators}{17}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.2}Participation Behaviour}{17}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Indicators}{18}{subsubsection.3.3.3}%
 \contentsline {subsection}{\numberline {3.4}Representation}{18}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Medal Distribution}{18}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Entries}{19}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Participation}{21}{subsubsection.3.4.3}%
-\contentsline {section}{Appendices}{22}{section*.24}%
-\contentsline {section}{\numberline {A}Important notes about the data}{22}{appendix.A}%
-\contentsline {section}{Appendices}{23}{section*.25}%
-\contentsline {section}{\numberline {A}About the data}{23}{appendix.A}%
-\contentsline {subsection}{\numberline {A.1}Host Cities}{23}{subsection.A.1}%
-\contentsline {subsection}{\numberline {A.2}Combined Data}{24}{subsection.A.2}%
-\contentsline {subsection}{\numberline {A.3}Totals}{29}{subsection.A.3}%
-\contentsline {subsection}{\numberline {A.4}Discussion}{33}{subsection.A.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Entries}{18}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Medal Distribution}{19}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Events}{20}{subsubsection.3.4.3}%
+\contentsline {section}{\numberline {4}Conclusion}{21}{section.4}%
+\contentsline {section}{\numberline {5}Reflection}{23}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Design Choices}{23}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Data Concentration}{23}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Limitations}{24}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Key Takeaways}{25}{subsubsection.5.1.3}%
+\contentsline {section}{Appendices}{26}{section*.24}%
+\contentsline {section}{\numberline {A}Important notes about the data}{26}{appendix.A}%
+\contentsline {section}{Appendices}{27}{section*.25}%
+\contentsline {section}{\numberline {A}About the data}{27}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Host Cities}{27}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Combined Data}{28}{subsection.A.2}%
+\contentsline {subsection}{\numberline {A.3}Totals}{33}{subsection.A.3}%
+\contentsline {section}{\numberline {B}Discussion}{37}{appendix.B}%
+\contentsline {subsection}{\numberline {B.1}The Games}{37}{subsection.B.1}%
+\contentsline {subsection}{\numberline {B.2}The Athletes}{39}{subsection.B.2}%
+\contentsline {subsection}{\numberline {B.3}The Countries}{41}{subsection.B.3}%
+\contentsline {subsection}{\numberline {B.4}Representation}{43}{subsection.B.4}%
