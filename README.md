@@ -16,8 +16,8 @@ In addition to the report a presentation was given providing an overview.
 ## DATA SOURCES
 - athlete_events.csv - 120 years of Olympic history - https://www.kaggle.com/heesoo37/120-years-of-olympic-history-athletes-and-results 
 ![athlete_events](./images/data/athlete_events.PNG)
-- noc_regions.csv - 120 years of Olympic history - https://www.kaggle.com/heesoo37/120-years-of-olympic-history-athletes-and-results
-![noc_regions](./images/data/noc_regions.PNG)
+- noc_regions.csv - 120 years of Olympic history - https://www.kaggle.com/heesoo37/120-years-of-olympic-history-athletes-and-results \
+![noc_regions](./images/data/noc_regions.PNG) 
 - gdp.csv - World Bank - https://data.worldbank.org/indicator/NY.GDP.MKTP.CD 
 ![worldbank_gdp](./images/data/worldbank_gdp.PNG)
 - population.csv - World Bank - https://data.worldbank.org/indicator/NY.GDP.MKTP.CD
@@ -42,15 +42,15 @@ Start with athlete_events.csv:
 11. Remove years 1896-1952
 12. Remove winter season
 13. Remove SEASON and GAMES columns
-![all_data](./images/data/all_data.png)
+![all_data](./images/data/all_data.PNG)
 
 ### TOTALS
 - games_total.csv - Totals for all each attributes each year
-![games_total](./images/data/games_total.png)
+![games_total](./images/data/games_total.PNG)
 - athlete_total.csv - Totals for each athlete (rather than each entry)
-![athlete_total](./images/data/athlete_total.png)
+![athlete_total](./images/data/athlete_total.PNG)
 - noc_total.csv - Totals for each country each year
-![noc_total](./images/data/noc_total.png)
+![noc_total](./images/data/noc_total.PNG)
 - host_difference.csv - The number and percentage of medals for host countries only
 
 # DISCUSSION
