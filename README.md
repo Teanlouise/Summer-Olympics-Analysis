@@ -1,4 +1,4 @@
-![readme_title](./readme_title.png)
+![readme_title](./readme_title.PNG)
 
 This report is about the Modern Summer Olympics from 1956 to 2016. The aim is to investigate whether there is equal distribution and provide insight into the following questions:
 - Does hosting at home increase chances of a medal?
@@ -15,15 +15,15 @@ In addition to the report a presentation was given providing an overview.
 
 ## DATA SOURCES
 - athlete_events.csv - 120 years of Olympic history - https://www.kaggle.com/heesoo37/120-years-of-olympic-history-athletes-and-results 
-![athlete_events](./images/data/athlete_events.png)
+![athlete_events](./images/data/athlete_events.PNG)
 - noc_regions.csv - 120 years of Olympic history - https://www.kaggle.com/heesoo37/120-years-of-olympic-history-athletes-and-results
-![noc_regions](./images/data/noc_regions.png)
+![noc_regions](./images/data/noc_regions.PNG)
 - gdp.csv - World Bank - https://data.worldbank.org/indicator/NY.GDP.MKTP.CD 
-![worldbank_gdp](./images/data/worldbank_gdp.png)
+![worldbank_gdp](./images/data/worldbank_gdp.PNG)
 - population.csv - World Bank - https://data.worldbank.org/indicator/NY.GDP.MKTP.CD
-![worldbank_pop](./images/data/worldbank_pop.png)
+![worldbank_pop](./images/data/worldbank_pop.PNG)
 - host_cities.csv - Manually made from https://architectureofthegames.net/olympic-host-cities/\
-![host_countries](./images/data/host_countries.png)
+![host_countries](./images/data/host_countries.PNG)
 
 ## DATA PROCESSING 
 
