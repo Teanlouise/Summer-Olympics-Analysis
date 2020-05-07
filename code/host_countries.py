@@ -24,17 +24,14 @@ winter_df = get_season_df(
 # Combine to create 1 DF
 host_df = pd.merge(summer_df, winter_df, how='outer')\
     .reset_index(drop = True)
-
 #Check if all cities accounted for:
 athlete_df = pd.read_csv(
             './data/athlete_events.csv')
-
 for host_city in host_df.City.unique():
     for athlete_city in athlete_df.City.unique():
         if (host_city not in host_df.City.unique()) \
                 and (athlete_city not in host_df.City.unique()):
             print("Host City: ", host_city)
             print("Athlete City: ", athlete_city)
-
 # Write to CSV
 host_df.to_csv('./data/host_countries.csv')

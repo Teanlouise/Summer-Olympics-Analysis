@@ -195,6 +195,11 @@ INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr17
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr12.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmmi12.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmsy10.tfm
+INPUT images\title.jpg
+INPUT .\images\title.jpg
+INPUT .\images\title.jpg
+INPUT .\images\title.jpg
+INPUT .\images\title.jpg
 INPUT C:\Users\teanm\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr17.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
@@ -210,6 +215,9 @@ INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmsy1
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmsy8.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmsy6.tfm
 OUTPUT f:\TEAN\Portfolio\olympics\report.toc
+INPUT f:\TEAN\Portfolio\olympics\report.lof
+INPUT f:\TEAN\Portfolio\olympics\report.lof
+OUTPUT f:\TEAN\Portfolio\olympics\report.lof
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmtt12.tfm
 INPUT images\data\athlete_events.png
@@ -321,6 +329,29 @@ INPUT .\images\graph\countries_medals_resid.png
 INPUT .\images\graph\countries_medals_resid.png
 INPUT .\images\graph\countries_medals_resid.png
 INPUT .\images\graph\countries_medals_resid.png
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
+INPUT f:\TEAN\Portfolio\olympics\References.pdf
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmr17.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.sty

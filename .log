@@ -1,0 +1,53 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350 64-bit) (preloaded format=latex 2020.5.6)  6 MAY 2020 14:09
+entering extended mode
+**main1.tex
+("C:\Users\teanm\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\.tex"
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-03-06> File ignored)
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*exit()
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+<*> e
+     xit()
+? 
+Missing character: There is no e in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ) in font nullfont!
+
+*
+
+Overfull \hbox (20.0pt too wide) detected at line 0
+[] 
+ []
+
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+! Emergency stop.
+<*> 
+    
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 19 strings out of 480935
+ 517 string characters out of 2899944
+ 239324 words of memory out of 3000000
+ 15987 multiletter control sequences out of 15000+200000
+ 532338 words of font info for 24 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 12i,0n,15p,90b,14s stack positions out of 5000i,500n,10000p,200000b,50000s
+No pages of output.

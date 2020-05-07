@@ -1,0 +1,23 @@
+\babel@toc {english}{}
+\contentsline {figure}{\numberline {1}{\ignorespaces athlete\_events.csv\relax }}{5}{figure.caption.4}%
+\contentsline {figure}{\numberline {2}{\ignorespaces noc\_regions.csv\relax }}{6}{figure.caption.5}%
+\contentsline {figure}{\numberline {3}{\ignorespaces worldbank\_gdp.csv\relax }}{6}{figure.caption.6}%
+\contentsline {figure}{\numberline {4}{\ignorespaces worldbank\_gdp.csv\relax }}{6}{figure.caption.7}%
+\contentsline {figure}{\numberline {5}{\ignorespaces host\_countries.csv\relax }}{7}{figure.caption.8}%
+\contentsline {figure}{\numberline {6}{\ignorespaces games\_total\_draft.csv\relax }}{8}{figure.caption.9}%
+\contentsline {figure}{\numberline {7}{\ignorespaces all\_data.csv\relax }}{8}{figure.caption.10}%
+\contentsline {figure}{\numberline {8}{\ignorespaces athlete\_total.csv\relax }}{9}{figure.caption.11}%
+\contentsline {figure}{\numberline {9}{\ignorespaces games\_total.csv\relax }}{9}{figure.caption.12}%
+\contentsline {figure}{\numberline {10}{\ignorespaces noc\_total.csv\relax }}{10}{figure.caption.13}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Distribution of Games Attributes for all Summer Olympics\relax }}{11}{figure.caption.14}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Box Plot - The Age of Summer Athletes since 1956 by Gender\relax }}{12}{figure.caption.15}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Violin Plot - The BMI of Summer athletes since 1956 by gender\relax }}{13}{figure.caption.16}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Bar Plot - The average number of events per Summer athlete since 1956 by gender\relax }}{14}{figure.caption.17}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Point Plot - The average number of medals per Summer athlete since 1956 by gender\relax }}{15}{figure.caption.18}%
+\contentsline {figure}{\numberline {16}{\ignorespaces QQ Plot - Comparison of Age and BMI for Medallists and Non-Medal Athletes\relax }}{16}{figure.caption.19}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Scatter Plot - Comparison of the average percentage of games medals won by host countries\relax }}{17}{figure.caption.20}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Heatmap - Correlation of participation behaviour attributes of all competing countries\relax }}{18}{figure.caption.21}%
+\contentsline {figure}{\numberline {19}{\ignorespaces 3D Scatter Plot -Relationship between the number of medals won by a country and its population and GDP each year\relax }}{19}{figure.caption.22}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Swarm Plot - Th percentage of entries from the top 20 countries\relax }}{20}{figure.caption.23}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Stacked Bar Chart - The percentage of medals awarded to the top 10 countries compared to all countries\relax }}{21}{figure.caption.24}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Polynomial Fit \& Residuals - The relationship of the percentage of total medals and number of events of the top 20 countries\relax }}{22}{figure.caption.25}%
